@@ -1,0 +1,25 @@
+{
+  "name": "waapi",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./src/main.ts",
+  "scripts": {
+    "start": "ncc run"
+  },
+  "author": "mashisora <mashisora@outlook.com>",
+  "license": "MIT",
+  "prettier": {
+    "singleQuote": true
+  },
+  "dependencies": {
+    "autobahn": "^22.11.1"
+  },
+  "devDependencies": {
+    "@types/autobahn": "^20.9.1",
+    "@types/node": "^18.11.11",
+    "@vercel/ncc": "^0.36.0",
+    "json-schema-to-ts": "^2.6.2",
+    "json-schema-to-typescript": "^11.0.2",
+    "typescript": "^4.9.4"
+  }
+}

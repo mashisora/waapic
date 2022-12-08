@@ -1,0 +1,230 @@
+export interface GetPropertyInfoArguments {
+  /**
+   * The ID (GUID), name, or path of the object to watch.
+   */
+  object?: string;
+  /**
+   * The ID (class ID) of the object to retrieve the property from.\n Unsigned Integer 32-bit.
+   */
+  classId?: number;
+  /**
+   * The name of the property to retrieve. For more information, refer to the property list of Wwise Objects listed in \ref wobjects_index .\n A property name. Refer to \ref wobjects_index for information about the Wwise objects and their properties.
+   */
+  property?: string;
+}
+
+export interface GetPropertyInfoResult {
+  /**
+   * The name of the property.
+   */
+  name?: string;
+  /**
+   * The type of the property. For more information, refer to the property list of Wwise Objects found in \ref wobjects_index .
+   */
+  type?: string;
+  /**
+   * The ID (audio engine ID) of the property.\n Unsigned Integer 32-bit.
+   */
+  audioEngineId?: number;
+  /**
+   * The default value of the property.\n The value of a property.
+   */
+  default?: null | string | number | boolean;
+  /**
+   * The features supported by the property.
+   */
+  supports?: {
+    /**
+     * The RTPC mode that is supported by the property.
+     */
+    rtpc?: 'None' | 'Additive' | 'Exclusive' | 'Multiplicative';
+    /**
+     * Indicates if the randomizer is supported by the property.
+     */
+    randomizer?: boolean;
+    /**
+     * Indicates if unlink is supported by the property.
+     */
+    unlink?: boolean;
+  };
+  /**
+   * Displays information related to the property.
+   */
+  display?: {
+    /**
+     * The display name of the property.
+     */
+    name?: string;
+    /**
+     * The display group of the property.
+     */
+    group?: string;
+    /**
+     * The display index of the property.
+     */
+    index?: number;
+  };
+  /**
+   * List of dependencies on other properties with their related action and conditions.
+   */
+  dependencies?: {
+    /**
+     * Defines the type of dependency.
+     */
+    type: 'override' | 'property' | 'reference' | 'objectType';
+    /**
+     * The name of the property to which the dependency is applied. For more information, refer to the property list of Wwise Objects listed in \ref wobjects_index .\n A property name. Refer to \ref wobjects_index for information about the Wwise objects and their properties.
+     */
+    property?: string;
+    /**
+     * The name of the action that is performed when the conditions are met.
+     */
+    action: string;
+    /**
+     * The name of the context in which the dependency is evaluated.
+     */
+    context: string;
+    /**
+     * An array of conditions related to the dependency.
+     */
+    conditions?: (
+      | {
+          [k: string]: unknown;
+        }
+      | {
+          [k: string]: unknown;
+        }
+    )[];
+  }[];
+  /**
+   * Restricts the value of the property.
+   */
+  restriction?:
+    | {}
+    | {
+        /**
+         * The value restriction of the property.
+         */
+        type: 'range';
+        /**
+         * The minimum value for the property.
+         */
+        min: number;
+        /**
+         * The maximum value for the property.
+         */
+        max: number;
+      }
+    | {
+        /**
+         * The object reference restrictions of the property.
+         */
+        type: 'reference';
+        /**
+         * The list of object reference restrictions.
+         */
+        restrictions: (
+          | {
+              /**
+               * An array of possible types.
+               */
+              type: string[];
+              /**
+               * An array of types that are only supported as Shared objects (i.e., not Custom) even if the reference can support Custom objects. This is always a subset of "type".
+               */
+              sharedOnlyTypes?: string[];
+            }
+          | {
+              /**
+               * An array of supported categories.
+               */
+              category: string[];
+            }
+          | {
+              /**
+               * Name of the reference.
+               */
+              childOfReference: string;
+            }
+          | ('notNull' | 'playable')
+        )[];
+      }
+    | {
+        /**
+         * The value restriction of the property.
+         */
+        type: 'enum';
+        /**
+         * Array of the possible enumerated values the property is restricted to.
+         */
+        values: {
+          /**
+           * The enumerated value.
+           */
+          value?: number | boolean;
+          /**
+           * The name associated with the value.
+           */
+          displayName?: string;
+        }[];
+      };
+  /**
+   * Information related to how the property is displayed.
+   */
+  ui?: {
+    /**
+     * Specifies how the property value is handled by Wwise UI.
+     */
+    value?: {
+      /**
+       * The number of decimals displayed for the value.
+       */
+      decimals?: number;
+      /**
+       * The amount by which the display increments the value.
+       */
+      step?: number;
+      /**
+       * The amount by which the display increments the value for fine adjustment.
+       */
+      fine?: number;
+      /**
+       * The minimum display value.
+       */
+      min?: number;
+      /**
+       * The maximum display value.
+       */
+      max?: number;
+      /**
+       * The number used to represent infinity.
+       */
+      infinity?: number;
+    };
+    /**
+     * Describe how the property is displayed.
+     */
+    displayAs?: {
+      /**
+       * Indicates if the property should be displayed as a left-right mix.
+       */
+      lrMix?: boolean;
+      /**
+       * Indicates if the property should be displayed as a music note (MIDI).
+       */
+      musicNote?: boolean;
+      /**
+       * Indicates if the property should be displayed as a bitfield.
+       */
+      bitfield?: boolean;
+    };
+    /**
+     * The unit type of the property.
+     */
+    dataMeaning?: 'None' | 'Frequency' | 'Decibels' | 'PitchCents';
+    /**
+     * Indicates if the value of the property is updated while moving the slider.
+     */
+    autoUpdate?: boolean;
+  };
+}
