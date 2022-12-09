@@ -1,8 +1,5 @@
 import { Session, Connection } from 'autobahn';
 import { Copy, Get } from './types/core/object';
-import { Options } from './types/shared';
-
-import { IObject } from './types/shared/object';
 
 export class Client {
   session: Session;
@@ -57,7 +54,7 @@ export function connect(host: string): Promise<WaapiClient> {
 export class WaapiClient extends Client {
   getObjects = async (
     args: Get.Arguments,
-    opts: Options
+    opts: Get.Options
   ): Promise<Get.Result> =>
     await this.call('ak.wwise.core.object.get', args, opts);
 
