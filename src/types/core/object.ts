@@ -10,7 +10,12 @@ export namespace Copy {
     onNameConflict?: 'rename' | 'replace' | 'fail';
   }
 
-  export type Result = IObject;
+  export interface Result {
+    /** The ID (GUID) of the parent. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+    id?: string;
+    /** The name of the parent. */
+    name?: string;
+  }
 }
 
 export namespace Move {
@@ -23,7 +28,12 @@ export namespace Move {
     onNameConflict?: 'rename' | 'replace' | 'fail';
   }
 
-  export type Result = IObject;
+  export interface Result {
+    /** The ID (GUID) of the parent. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+    id?: string;
+    /** The name of the parent. */
+    name?: string;
+  }
 }
 
 export namespace Create {
@@ -46,8 +56,8 @@ export namespace Create {
     notes?: string;
     /** An array of child objects to be created. */
     children?: Children;
-    /** Sets the value of property @propertyName. The value of a property. */
-    [k: string]: any;
+    /** Sets the value of property @propertyName. */
+    [property: `@${string}`]: unknown;
   }
 
   type Children = {
@@ -59,8 +69,8 @@ export namespace Create {
     notes?: string;
     /** An array of child objects to be created. */
     children?: Children;
-    /** Sets the value of property @propertyName. The value of a property. */
-    [k: string]: any;
+    /** Sets the value of property @propertyName. */
+    [property: `@${string}`]: unknown;
   }[];
 
   export interface Result {
@@ -100,80 +110,6 @@ export namespace Get {
   export interface Arguments {
     /** Specifies a query in the WAQL language. */
     waql?: string;
-    /** The query starting point. Note, this is deprecated. The WAQL argument should be used instead. */
-    from?:
-      | {
-          /**
-           * An array of object IDs, either GUID or Short ID (uint32).
-           */
-          id: (
-            | string
-            | {
-                /**
-                 * The Short ID of the object. Unsigned Integer 32-bit.
-                 */
-                shortId: number;
-                /**
-                 * This syntax is deprecated and we recommend the use of WAQL. The type of object for the Short ID. The type â€‹â€‹can be 10 (Event), 12 (SwitchGroup), 14 (StateGroup), 17 (EffectPlugin), 18 (SoundBank), 19 (Bus), 20 (AuxBus), 22 (GameParameter),  41 (Trigger) or 68 (AudioDevicePlugin)
-                 */
-                type: number;
-              }
-          )[];
-        }
-      | {
-          /**
-           * An array of text tokens used for searching the project.
-           */
-          search: [string];
-        }
-      | {
-          /**
-           * An array of unique object qualified names.
-           */
-          name: string[];
-        }
-      | {
-          /**
-           * An array of object paths.
-           */
-          path: string[];
-        }
-      | {
-          /**
-           * An array of object types.
-           */
-          ofType: string[];
-        }
-      | {
-          /**
-           * An array of query object ID.
-           */
-          query: [string];
-        };
-    /** Array of sequential transformations chained on the object list returned by "from". */
-    transform?: (
-      | {
-          /**
-           * An array of only 1 selector.
-           */
-          select: [
-            'parent' | 'children' | 'descendants' | 'ancestors' | 'referencesTo'
-          ];
-        }
-      | 'distinct'
-      | {
-          /**
-           * An array of two numbers specifying the boundary indexes. Use this to only include a portion of the results. For example, this could be used to obtain the 100 first items of a search result: [0,100].
-           */
-          range: [number, number];
-        }
-      | {
-          /**
-           * An array of two tokens to filter results. The first token is the filter predicate. The second token is the parameter to the predicate.
-           */
-          where: [string | string[], ...(string | string[])[]];
-        }
-    )[];
   }
 
   export interface Options {
@@ -245,7 +181,7 @@ export namespace PasteProperties {
     /** The ID (GUID), name, or path of the source object. */
     source: string;
     /** Array of target objects to paste into. */
-    targets: (string | string | string)[];
+    targets: string[];
     /** Paste mode for lists. Default value is "replaceEntire". With "replaceEntire" all elements in the lists of a target object are removed and all selected elements from the source's lists are copied. Conversely, with "addReplace" and "addKeep" elements in a target which are not in the source are not removed. Elements in the source's list which are not in a target's list are added to the target. For elements which are common to the source and a target "addReplace" will copy the one from the source, replacing the target's element, whereas "addKeep" will retain the element in the target. */
     pasteMode?: 'replaceEntire' | 'addReplace' | 'addKeep';
     /** Array of properties, references and lists to include in the paste operation. When not specified, all properties, references and lists are included, and the exclusion defines which ones to exclude */
@@ -256,7 +192,77 @@ export namespace PasteProperties {
 }
 
 export namespace Set {
-  export interface Arguments {}
+  export interface Arguments {
+    /** An array of objects on which to set values and create child or list objects. */
+    objects: {
+      /** The ID (GUID), name, or path of the existing object on which to set the name, notes, properties or references and under which to create children or create objects in a list. */
+      object: string;
+      /** The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms. */
+      platform?: string;
+      /** The action to take if "object" already has a child with the same name. Default value is "fail". */
+      onNameConflict?: 'rename' | 'replace' | 'fail' | 'merge';
+      /** The action to take if "object" already has objects in a specified list. Default value is "append". */
+      listMode?: 'replaceAll' | 'append';
+      /** The new name of "object". */
+      name?: string;
+      /** The new notes or comments of "object". */
+      notes?: string;
+      /** An array of child objects to be created. */
+      children?: Children;
+      /** Sets the value of property @propertyName. */
+      [property: `@${string}`]: unknown;
+    }[];
+    /** Unless overriden by an individual "object", the ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms. */
+    platform?: string;
+    /** Unless overriden by an individual "object", the action to take if "object" already has a child with the same name. Default value is "fail". */
+    onNameConflict?: 'rename' | 'replace' | 'fail' | 'merge';
+    /** Unless overriden by an individual "object", the action to take if "object" already has objects in a specified list. Default value is "append". */
+    listMode?: 'replaceAll' | 'append';
+    /** Determines if Wwise automatically performs an Add or Checkout source control operation for affected work units. Defaults to false. */
+    autoAddToSourceControl?: boolean;
+  }
+
+  type Children = {
+    /** The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms. */
+    platform?: string;
+    /** The type of the new object. */
+    type: string;
+    /** The name of the new object. */
+    name: string;
+    /** The notes or comments of the new object. */
+    notes?: string;
+    /** The ID (class ID) of the plug-in. Only specify for Effect or Source plug-ins. Unsigned Integer 32-bit. */
+    classId?: number;
+    /** The ID (GUID) or name of the language. Only use this argument when creating Sound Voice objects. */
+    language?: string;
+    /** An array of child objects to be created (Recursive). */
+    children?: Children;
+    /** Sets the value of property @propertyName. */
+    [property: `@${string}`]: unknown;
+  }[];
+
+  export interface Result {
+    /**
+     * Array of {object, created objects} associations for each parent object.
+     */
+    objects?: {
+      /** The ID (GUID) of the parent. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+      id: string;
+      /** The name of the parent. */
+      name: string;
+      /** The child objects created. */
+      children?: ChildrenRes;
+    }[];
+  }
+
+  type ChildrenRes = {
+    /** The ID (GUID) of the parent. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+    id: string;
+    /** The name of the parent. */
+    name: string;
+    /** The child objects created. */
+    children?: ChildrenRes;
+  }[];
 }
 
 export namespace SetAttenuationCurve {

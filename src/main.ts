@@ -6,18 +6,32 @@ import { compileFromFile } from 'json-schema-to-typescript';
 const client = await connect('ws://127.0.0.1:8080/waapi');
 
 try {
-  const res = await client.call(
-    'ak.wwise.core.object.set',
-    {
-      objects: [{ object: `$ {96BA32D2-D502-49E6-AFD7-B794657504A5}"` }],
-    },
-    { return: ['id', 'name'] }
-  );
+  const res = await client.setObject({
+    objects: [
+      {
+        object: '{ECA0FF44-E032-407E-A258-D9C264C8F5DD}',
+        children: [
+          {
+            type: 'ActorMixer',
+            name: 'Weapons',
+            '@Volume': '-2',
+          },
+        ],
+      },
+    ],
+  });
 
-  console.log(res);
+  if (res.objects) {
+    console.log(res.objects[0].children);
+  }
 } catch (err) {
   console.log(err);
 }
+import { Create } from './types/core/object';
+const a = {} as Create.Arguments;
+
+let b = a['@123'];
+b = '1';
 
 await client.disconnect();
 

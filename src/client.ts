@@ -1,5 +1,6 @@
 import { Session, Connection } from 'autobahn';
-import { Copy, Get } from './types/core/object';
+import { Settings } from 'http2';
+import { Copy, Get, Set } from './types/core/object';
 
 export class Client {
   session: Session;
@@ -60,4 +61,7 @@ export class WaapiClient extends Client {
 
   copyObject = async (args: Copy.Arguments): Promise<Copy.Result> =>
     await this.call('ak.wwise.core.object.copy', args);
+
+  setObject = async (args: Set.Arguments): Promise<Set.Result> =>
+    await this.call('ak.wwise.core.object.set', args);
 }

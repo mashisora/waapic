@@ -1,0 +1,1309 @@
+{
+  "localDefinitions": {
+    "object": {
+      "type": "object",
+      "description": "Child object to be created.",
+      "properties": {
+        "platform": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+              "description": "The name of the object."
+            },
+            {
+              "type": "string",
+              "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+              "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+            }
+          ],
+          "description": "The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the new object."
+        },
+        "notes": {
+          "type": "string",
+          "description": "The notes or comments of the new object."
+        },
+        "classId": {
+          "type": "integer",
+          "description": "The ID (class ID) of the plug-in. Only specify for Effect or Source plug-ins. Refer to \\ref wobjects_index for possible ClassId values.\\n Unsigned Integer 32-bit.",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "language": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+              "description": "The name of the object."
+            },
+            {
+              "type": "string",
+              "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+              "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+            }
+          ],
+          "description": "The ID (GUID) or name of the language. Only use this argument when creating Sound Voice objects."
+        },
+        "children": {
+          "type": "array",
+          "description": "An array of child objects to be created (Recursive).\\n An array of child objects to be created.",
+          "items": {
+            "type": "object",
+            "description": "Child objects to be created.\\n Child object to be created.",
+            "properties": {
+              "platform": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                    "description": "The name of the object."
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                    "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                  }
+                ],
+                "description": "The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms."
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the new object."
+              },
+              "notes": {
+                "type": "string",
+                "description": "The notes or comments of the new object."
+              },
+              "classId": {
+                "type": "integer",
+                "description": "The ID (class ID) of the plug-in. Only specify for Effect or Source plug-ins. Refer to \\ref wobjects_index for possible ClassId values.\\n Unsigned Integer 32-bit.",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "language": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                    "description": "The name of the object."
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                    "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                  }
+                ],
+                "description": "The ID (GUID) or name of the language. Only use this argument when creating Sound Voice objects."
+              },
+              "children": {
+                "$ref": "#/localDefinitions/objectArray",
+                "description": "An array of child objects to be created (Recursive)."
+              }
+            },
+            "patternProperties": {
+              "^@[:_a-zA-Z0-9]+$": {
+                "anyOf": [
+                  {
+                    "$ref": "#/localDefinitions/objectArray",
+                    "description": "Objects to create in list \\@listName. Refer to \\ref wobjects_index for the possible list names for each Wwise object."
+                  },
+                  {
+                    "type": "null",
+                    "description": "A null value. No reference to an object."
+                  },
+                  {
+                    "type": "string",
+                    "description": "A string value."
+                  },
+                  {
+                    "type": "number",
+                    "description": "A numerical value."
+                  },
+                  {
+                    "type": "boolean",
+                    "description": "A boolean value."
+                  },
+                  {
+                    "$ref": "#/localDefinitions/object",
+                    "description": "Object to create and assign to a reference. Refer to \\ref wobjects_index for the possible object types."
+                  },
+                  {
+                    "description": "The definition of an \"in-place\" Curve object.",
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                      },
+                      "points": {
+                        "type": "array",
+                        "description": "Used when creating a Curve.\\n An array of points defining a curve.",
+                        "items": {
+                          "type": "object",
+                          "description": "A point in the curve.",
+                          "properties": {
+                            "x": {
+                              "type": "number",
+                              "description": "X coordinate of curve point."
+                            },
+                            "y": {
+                              "type": "number",
+                              "description": "Y coordinate of curve point."
+                            },
+                            "shape": {
+                              "type": "string",
+                              "description": "Shape of the curve segment between this point and the next.",
+                              "enum": [
+                                "Constant",
+                                "Linear",
+                                "Log3",
+                                "Log2",
+                                "Log1",
+                                "InvertedSCurve",
+                                "SCurve",
+                                "Exp1",
+                                "Exp2",
+                                "Exp3"
+                              ]
+                            }
+                          },
+                          "required": ["x", "y", "shape"],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": ["type", "points"],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "required": ["type", "name"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "patternProperties": {
+        "^@[:_a-zA-Z0-9]+$": {
+          "anyOf": [
+            {
+              "type": "array",
+              "description": "Objects to create in list \\@listName. Refer to \\ref wobjects_index for the possible list names for each Wwise object.\\n An array of child objects to be created.",
+              "items": {
+                "type": "object",
+                "description": "Child objects to be created.\\n Child object to be created.",
+                "properties": {
+                  "platform": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                        "description": "The name of the object."
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                        "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                      }
+                    ],
+                    "description": "The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms."
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the new object."
+                  },
+                  "notes": {
+                    "type": "string",
+                    "description": "The notes or comments of the new object."
+                  },
+                  "classId": {
+                    "type": "integer",
+                    "description": "The ID (class ID) of the plug-in. Only specify for Effect or Source plug-ins. Refer to \\ref wobjects_index for possible ClassId values.\\n Unsigned Integer 32-bit.",
+                    "minimum": 0,
+                    "maximum": 4294967295
+                  },
+                  "language": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                        "description": "The name of the object."
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                        "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                      }
+                    ],
+                    "description": "The ID (GUID) or name of the language. Only use this argument when creating Sound Voice objects."
+                  },
+                  "children": {
+                    "$ref": "#/localDefinitions/objectArray",
+                    "description": "An array of child objects to be created (Recursive)."
+                  }
+                },
+                "patternProperties": {
+                  "^@[:_a-zA-Z0-9]+$": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/localDefinitions/objectArray",
+                        "description": "Objects to create in list \\@listName. Refer to \\ref wobjects_index for the possible list names for each Wwise object."
+                      },
+                      {
+                        "type": "null",
+                        "description": "A null value. No reference to an object."
+                      },
+                      {
+                        "type": "string",
+                        "description": "A string value."
+                      },
+                      {
+                        "type": "number",
+                        "description": "A numerical value."
+                      },
+                      {
+                        "type": "boolean",
+                        "description": "A boolean value."
+                      },
+                      {
+                        "$ref": "#/localDefinitions/object",
+                        "description": "Object to create and assign to a reference. Refer to \\ref wobjects_index for the possible object types."
+                      },
+                      {
+                        "description": "The definition of an \"in-place\" Curve object.",
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                          },
+                          "points": {
+                            "type": "array",
+                            "description": "Used when creating a Curve.\\n An array of points defining a curve.",
+                            "items": {
+                              "type": "object",
+                              "description": "A point in the curve.",
+                              "properties": {
+                                "x": {
+                                  "type": "number",
+                                  "description": "X coordinate of curve point."
+                                },
+                                "y": {
+                                  "type": "number",
+                                  "description": "Y coordinate of curve point."
+                                },
+                                "shape": {
+                                  "type": "string",
+                                  "description": "Shape of the curve segment between this point and the next.",
+                                  "enum": [
+                                    "Constant",
+                                    "Linear",
+                                    "Log3",
+                                    "Log2",
+                                    "Log1",
+                                    "InvertedSCurve",
+                                    "SCurve",
+                                    "Exp1",
+                                    "Exp2",
+                                    "Exp3"
+                                  ]
+                                }
+                              },
+                              "required": ["x", "y", "shape"],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": ["type", "points"],
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                },
+                "required": ["type", "name"],
+                "additionalProperties": false
+              }
+            },
+            {
+              "type": "null",
+              "description": "A null value. No reference to an object."
+            },
+            {
+              "type": "string",
+              "description": "A string value."
+            },
+            {
+              "type": "number",
+              "description": "A numerical value."
+            },
+            {
+              "type": "boolean",
+              "description": "A boolean value."
+            },
+            {
+              "type": "object",
+              "description": "Object to create and assign to a reference. Refer to \\ref wobjects_index for the possible object types.\\n Child object to be created.",
+              "properties": {
+                "platform": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                      "description": "The name of the object."
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                      "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                    }
+                  ],
+                  "description": "The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms."
+                },
+                "type": {
+                  "type": "string",
+                  "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "The name of the new object."
+                },
+                "notes": {
+                  "type": "string",
+                  "description": "The notes or comments of the new object."
+                },
+                "classId": {
+                  "type": "integer",
+                  "description": "The ID (class ID) of the plug-in. Only specify for Effect or Source plug-ins. Refer to \\ref wobjects_index for possible ClassId values.\\n Unsigned Integer 32-bit.",
+                  "minimum": 0,
+                  "maximum": 4294967295
+                },
+                "language": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                      "description": "The name of the object."
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                      "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                    }
+                  ],
+                  "description": "The ID (GUID) or name of the language. Only use this argument when creating Sound Voice objects."
+                },
+                "children": {
+                  "type": "array",
+                  "description": "An array of child objects to be created (Recursive).\\n An array of child objects to be created.",
+                  "items": {
+                    "$ref": "#/localDefinitions/object",
+                    "description": "Child objects to be created."
+                  }
+                }
+              },
+              "patternProperties": {
+                "^@[:_a-zA-Z0-9]+$": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "description": "Objects to create in list \\@listName. Refer to \\ref wobjects_index for the possible list names for each Wwise object.\\n An array of child objects to be created.",
+                      "items": {
+                        "$ref": "#/localDefinitions/object",
+                        "description": "Child objects to be created."
+                      }
+                    },
+                    {
+                      "type": "null",
+                      "description": "A null value. No reference to an object."
+                    },
+                    {
+                      "type": "string",
+                      "description": "A string value."
+                    },
+                    {
+                      "type": "number",
+                      "description": "A numerical value."
+                    },
+                    {
+                      "type": "boolean",
+                      "description": "A boolean value."
+                    },
+                    {
+                      "$ref": "#/localDefinitions/object",
+                      "description": "Object to create and assign to a reference. Refer to \\ref wobjects_index for the possible object types."
+                    },
+                    {
+                      "description": "The definition of an \"in-place\" Curve object.",
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                        },
+                        "points": {
+                          "type": "array",
+                          "description": "Used when creating a Curve.\\n An array of points defining a curve.",
+                          "items": {
+                            "type": "object",
+                            "description": "A point in the curve.",
+                            "properties": {
+                              "x": {
+                                "type": "number",
+                                "description": "X coordinate of curve point."
+                              },
+                              "y": {
+                                "type": "number",
+                                "description": "Y coordinate of curve point."
+                              },
+                              "shape": {
+                                "type": "string",
+                                "description": "Shape of the curve segment between this point and the next.",
+                                "enum": [
+                                  "Constant",
+                                  "Linear",
+                                  "Log3",
+                                  "Log2",
+                                  "Log1",
+                                  "InvertedSCurve",
+                                  "SCurve",
+                                  "Exp1",
+                                  "Exp2",
+                                  "Exp3"
+                                ]
+                              }
+                            },
+                            "required": ["x", "y", "shape"],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": ["type", "points"],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "required": ["type", "name"],
+              "additionalProperties": false
+            },
+            {
+              "description": "The definition of an \"in-place\" Curve object.",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                },
+                "points": {
+                  "type": "array",
+                  "description": "Used when creating a Curve.\\n An array of points defining a curve.",
+                  "items": {
+                    "type": "object",
+                    "description": "A point in the curve.",
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "description": "X coordinate of curve point."
+                      },
+                      "y": {
+                        "type": "number",
+                        "description": "Y coordinate of curve point."
+                      },
+                      "shape": {
+                        "type": "string",
+                        "description": "Shape of the curve segment between this point and the next.",
+                        "enum": [
+                          "Constant",
+                          "Linear",
+                          "Log3",
+                          "Log2",
+                          "Log1",
+                          "InvertedSCurve",
+                          "SCurve",
+                          "Exp1",
+                          "Exp2",
+                          "Exp3"
+                        ]
+                      }
+                    },
+                    "required": ["x", "y", "shape"],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": ["type", "points"],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "required": ["type", "name"],
+      "additionalProperties": false
+    },
+    "objectArray": {
+      "type": "array",
+      "description": "An array of child objects to be created.",
+      "items": {
+        "type": "object",
+        "description": "Child objects to be created.\\n Child object to be created.",
+        "properties": {
+          "platform": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                "description": "The name of the object."
+              },
+              {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              }
+            ],
+            "description": "The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms."
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the new object."
+          },
+          "notes": {
+            "type": "string",
+            "description": "The notes or comments of the new object."
+          },
+          "classId": {
+            "type": "integer",
+            "description": "The ID (class ID) of the plug-in. Only specify for Effect or Source plug-ins. Refer to \\ref wobjects_index for possible ClassId values.\\n Unsigned Integer 32-bit.",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                "description": "The name of the object."
+              },
+              {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              }
+            ],
+            "description": "The ID (GUID) or name of the language. Only use this argument when creating Sound Voice objects."
+          },
+          "children": {
+            "type": "array",
+            "description": "An array of child objects to be created (Recursive).\\n An array of child objects to be created.",
+            "items": {
+              "$ref": "#/localDefinitions/object",
+              "description": "Child objects to be created."
+            }
+          }
+        },
+        "patternProperties": {
+          "^@[:_a-zA-Z0-9]+$": {
+            "anyOf": [
+              {
+                "type": "array",
+                "description": "Objects to create in list \\@listName. Refer to \\ref wobjects_index for the possible list names for each Wwise object.\\n An array of child objects to be created.",
+                "items": {
+                  "$ref": "#/localDefinitions/object",
+                  "description": "Child objects to be created."
+                }
+              },
+              {
+                "type": "null",
+                "description": "A null value. No reference to an object."
+              },
+              {
+                "type": "string",
+                "description": "A string value."
+              },
+              {
+                "type": "number",
+                "description": "A numerical value."
+              },
+              {
+                "type": "boolean",
+                "description": "A boolean value."
+              },
+              {
+                "$ref": "#/localDefinitions/object",
+                "description": "Object to create and assign to a reference. Refer to \\ref wobjects_index for the possible object types."
+              },
+              {
+                "description": "The definition of an \"in-place\" Curve object.",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                  },
+                  "points": {
+                    "type": "array",
+                    "description": "Used when creating a Curve.\\n An array of points defining a curve.",
+                    "items": {
+                      "type": "object",
+                      "description": "A point in the curve.",
+                      "properties": {
+                        "x": {
+                          "type": "number",
+                          "description": "X coordinate of curve point."
+                        },
+                        "y": {
+                          "type": "number",
+                          "description": "Y coordinate of curve point."
+                        },
+                        "shape": {
+                          "type": "string",
+                          "description": "Shape of the curve segment between this point and the next.",
+                          "enum": [
+                            "Constant",
+                            "Linear",
+                            "Log3",
+                            "Log2",
+                            "Log1",
+                            "InvertedSCurve",
+                            "SCurve",
+                            "Exp1",
+                            "Exp2",
+                            "Exp3"
+                          ]
+                        }
+                      },
+                      "required": ["x", "y", "shape"],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": ["type", "points"],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "required": ["type", "name"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "objects": {
+      "type": "array",
+      "description": "An array of objects on which to set values and create child or list objects.",
+      "items": {
+        "type": "object",
+        "description": "The object specification, values to set, objects to create, and overriding options applicable to this object.",
+        "properties": {
+          "object": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(StateGroup|SwitchGroup|SoundBank|GameParameter|Event|Effect|AudioDevice|Trigger|Attenuation|DialogueEvent|Bus|AuxBus|Conversion|ModulatorLfo|ModulatorEnvelope|ModulatorTime|Platform|Language|AcousticTexture|Global):[a-zA-Z0-9_]+$",
+                "description": "The name of the object qualified by its type or Short ID in the form of type:name or Global:shortId. Only object types that have globally-unique names or Short Ids are supported. Ex: Event:Play_Sound_01, Global:245489792"
+              },
+              {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              },
+              {
+                "type": "string",
+                "pattern": "^\\\\",
+                "description": "A project path to a Wwise object, including the category and the work-unit. For example: \\\\Actor-Mixer Hierarchy\\\\Default Work Unit\\\\New Sound SFX."
+              }
+            ],
+            "description": "The ID (GUID), name, or path of the existing object on which to set the name, notes, properties or references and under which to create children or create objects in a list."
+          },
+          "platform": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                "description": "The name of the object."
+              },
+              {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              }
+            ],
+            "description": "The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms."
+          },
+          "onNameConflict": {
+            "type": "string",
+            "description": "The action to take if \"object\" already has a child with the same name. Default value is \"fail\". Refer to \\ref waapi_create_objects_modes for more information.",
+            "enum": ["rename", "replace", "fail", "merge"]
+          },
+          "listMode": {
+            "type": "string",
+            "description": "The action to take if \"object\" already has objects in a specified list. Default value is \"append\". Refer to \\ref waapi_set_lists_modes for more information.",
+            "enum": ["replaceAll", "append"]
+          },
+          "name": {
+            "type": "string",
+            "description": "The new name of \"object\"."
+          },
+          "notes": {
+            "type": "string",
+            "description": "The new notes or comments of \"object\"."
+          },
+          "children": {
+            "type": "array",
+            "description": "An array of child objects to be created.",
+            "items": {
+              "type": "object",
+              "description": "Child objects to be created.\\n Child object to be created.",
+              "properties": {
+                "platform": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                      "description": "The name of the object."
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                      "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                    }
+                  ],
+                  "description": "The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms."
+                },
+                "type": {
+                  "type": "string",
+                  "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "The name of the new object."
+                },
+                "notes": {
+                  "type": "string",
+                  "description": "The notes or comments of the new object."
+                },
+                "classId": {
+                  "type": "integer",
+                  "description": "The ID (class ID) of the plug-in. Only specify for Effect or Source plug-ins. Refer to \\ref wobjects_index for possible ClassId values.\\n Unsigned Integer 32-bit.",
+                  "minimum": 0,
+                  "maximum": 4294967295
+                },
+                "language": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                      "description": "The name of the object."
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                      "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                    }
+                  ],
+                  "description": "The ID (GUID) or name of the language. Only use this argument when creating Sound Voice objects."
+                },
+                "children": {
+                  "$ref": "#/localDefinitions/objectArray",
+                  "description": "An array of child objects to be created (Recursive)."
+                }
+              },
+              "patternProperties": {
+                "^@[:_a-zA-Z0-9]+$": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/localDefinitions/objectArray",
+                      "description": "Objects to create in list \\@listName. Refer to \\ref wobjects_index for the possible list names for each Wwise object."
+                    },
+                    {
+                      "type": "null",
+                      "description": "A null value. No reference to an object."
+                    },
+                    {
+                      "type": "string",
+                      "description": "A string value."
+                    },
+                    {
+                      "type": "number",
+                      "description": "A numerical value."
+                    },
+                    {
+                      "type": "boolean",
+                      "description": "A boolean value."
+                    },
+                    {
+                      "$ref": "#/localDefinitions/object",
+                      "description": "Object to create and assign to a reference. Refer to \\ref wobjects_index for the possible object types."
+                    },
+                    {
+                      "description": "The definition of an \"in-place\" Curve object.",
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                        },
+                        "points": {
+                          "type": "array",
+                          "description": "Used when creating a Curve.\\n An array of points defining a curve.",
+                          "items": {
+                            "type": "object",
+                            "description": "A point in the curve.",
+                            "properties": {
+                              "x": {
+                                "type": "number",
+                                "description": "X coordinate of curve point."
+                              },
+                              "y": {
+                                "type": "number",
+                                "description": "Y coordinate of curve point."
+                              },
+                              "shape": {
+                                "type": "string",
+                                "description": "Shape of the curve segment between this point and the next.",
+                                "enum": [
+                                  "Constant",
+                                  "Linear",
+                                  "Log3",
+                                  "Log2",
+                                  "Log1",
+                                  "InvertedSCurve",
+                                  "SCurve",
+                                  "Exp1",
+                                  "Exp2",
+                                  "Exp3"
+                                ]
+                              }
+                            },
+                            "required": ["x", "y", "shape"],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": ["type", "points"],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "required": ["type", "name"],
+              "additionalProperties": false
+            }
+          }
+        },
+        "patternProperties": {
+          "^@[:_a-zA-Z0-9]+$": {
+            "anyOf": [
+              {
+                "type": "array",
+                "description": "Objects to create in list \\@listName. Refer to \\ref wobjects_index for the possible list names for each Wwise object.\\n An array of child objects to be created.",
+                "items": {
+                  "type": "object",
+                  "description": "Child objects to be created.\\n Child object to be created.",
+                  "properties": {
+                    "platform": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                          "description": "The name of the object."
+                        },
+                        {
+                          "type": "string",
+                          "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                          "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                        }
+                      ],
+                      "description": "The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms."
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the new object."
+                    },
+                    "notes": {
+                      "type": "string",
+                      "description": "The notes or comments of the new object."
+                    },
+                    "classId": {
+                      "type": "integer",
+                      "description": "The ID (class ID) of the plug-in. Only specify for Effect or Source plug-ins. Refer to \\ref wobjects_index for possible ClassId values.\\n Unsigned Integer 32-bit.",
+                      "minimum": 0,
+                      "maximum": 4294967295
+                    },
+                    "language": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                          "description": "The name of the object."
+                        },
+                        {
+                          "type": "string",
+                          "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                          "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                        }
+                      ],
+                      "description": "The ID (GUID) or name of the language. Only use this argument when creating Sound Voice objects."
+                    },
+                    "children": {
+                      "$ref": "#/localDefinitions/objectArray",
+                      "description": "An array of child objects to be created (Recursive)."
+                    }
+                  },
+                  "patternProperties": {
+                    "^@[:_a-zA-Z0-9]+$": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/localDefinitions/objectArray",
+                          "description": "Objects to create in list \\@listName. Refer to \\ref wobjects_index for the possible list names for each Wwise object."
+                        },
+                        {
+                          "type": "null",
+                          "description": "A null value. No reference to an object."
+                        },
+                        {
+                          "type": "string",
+                          "description": "A string value."
+                        },
+                        {
+                          "type": "number",
+                          "description": "A numerical value."
+                        },
+                        {
+                          "type": "boolean",
+                          "description": "A boolean value."
+                        },
+                        {
+                          "$ref": "#/localDefinitions/object",
+                          "description": "Object to create and assign to a reference. Refer to \\ref wobjects_index for the possible object types."
+                        },
+                        {
+                          "description": "The definition of an \"in-place\" Curve object.",
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                            },
+                            "points": {
+                              "type": "array",
+                              "description": "Used when creating a Curve.\\n An array of points defining a curve.",
+                              "items": {
+                                "type": "object",
+                                "description": "A point in the curve.",
+                                "properties": {
+                                  "x": {
+                                    "type": "number",
+                                    "description": "X coordinate of curve point."
+                                  },
+                                  "y": {
+                                    "type": "number",
+                                    "description": "Y coordinate of curve point."
+                                  },
+                                  "shape": {
+                                    "type": "string",
+                                    "description": "Shape of the curve segment between this point and the next.",
+                                    "enum": [
+                                      "Constant",
+                                      "Linear",
+                                      "Log3",
+                                      "Log2",
+                                      "Log1",
+                                      "InvertedSCurve",
+                                      "SCurve",
+                                      "Exp1",
+                                      "Exp2",
+                                      "Exp3"
+                                    ]
+                                  }
+                                },
+                                "required": ["x", "y", "shape"],
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          "required": ["type", "points"],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "required": ["type", "name"],
+                  "additionalProperties": false
+                }
+              },
+              {
+                "type": "null",
+                "description": "A null value. No reference to an object."
+              },
+              {
+                "type": "string",
+                "description": "A string value."
+              },
+              {
+                "type": "number",
+                "description": "A numerical value."
+              },
+              {
+                "type": "boolean",
+                "description": "A boolean value."
+              },
+              {
+                "description": "The definition of an \"in-place\" Curve object.",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                  },
+                  "points": {
+                    "type": "array",
+                    "description": "Used when creating a Curve.\\n An array of points defining a curve.",
+                    "items": {
+                      "type": "object",
+                      "description": "A point in the curve.",
+                      "properties": {
+                        "x": {
+                          "type": "number",
+                          "description": "X coordinate of curve point."
+                        },
+                        "y": {
+                          "type": "number",
+                          "description": "Y coordinate of curve point."
+                        },
+                        "shape": {
+                          "type": "string",
+                          "description": "Shape of the curve segment between this point and the next.",
+                          "enum": [
+                            "Constant",
+                            "Linear",
+                            "Log3",
+                            "Log2",
+                            "Log1",
+                            "InvertedSCurve",
+                            "SCurve",
+                            "Exp1",
+                            "Exp2",
+                            "Exp3"
+                          ]
+                        }
+                      },
+                      "required": ["x", "y", "shape"],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": ["type", "points"],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "description": "Child object to be created.",
+                "properties": {
+                  "platform": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                        "description": "The name of the object."
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                        "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                      }
+                    ],
+                    "description": "The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms."
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the new object."
+                  },
+                  "notes": {
+                    "type": "string",
+                    "description": "The notes or comments of the new object."
+                  },
+                  "classId": {
+                    "type": "integer",
+                    "description": "The ID (class ID) of the plug-in. Only specify for Effect or Source plug-ins. Refer to \\ref wobjects_index for possible ClassId values.\\n Unsigned Integer 32-bit.",
+                    "minimum": 0,
+                    "maximum": 4294967295
+                  },
+                  "language": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+                        "description": "The name of the object."
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                        "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                      }
+                    ],
+                    "description": "The ID (GUID) or name of the language. Only use this argument when creating Sound Voice objects."
+                  },
+                  "children": {
+                    "type": "array",
+                    "description": "An array of child objects to be created (Recursive).\\n An array of child objects to be created.",
+                    "items": {
+                      "$ref": "#/localDefinitions/object",
+                      "description": "Child objects to be created."
+                    }
+                  }
+                },
+                "patternProperties": {
+                  "^@[:_a-zA-Z0-9]+$": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "description": "Objects to create in list \\@listName. Refer to \\ref wobjects_index for the possible list names for each Wwise object.\\n An array of child objects to be created.",
+                        "items": {
+                          "$ref": "#/localDefinitions/object",
+                          "description": "Child objects to be created."
+                        }
+                      },
+                      {
+                        "type": "null",
+                        "description": "A null value. No reference to an object."
+                      },
+                      {
+                        "type": "string",
+                        "description": "A string value."
+                      },
+                      {
+                        "type": "number",
+                        "description": "A numerical value."
+                      },
+                      {
+                        "type": "boolean",
+                        "description": "A boolean value."
+                      },
+                      {
+                        "$ref": "#/localDefinitions/object",
+                        "description": "Object to create and assign to a reference. Refer to \\ref wobjects_index for the possible object types."
+                      },
+                      {
+                        "description": "The definition of an \"in-place\" Curve object.",
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "description": "The type of the new object. Refer to \\ref wobjects_index for possible object types."
+                          },
+                          "points": {
+                            "type": "array",
+                            "description": "Used when creating a Curve.\\n An array of points defining a curve.",
+                            "items": {
+                              "type": "object",
+                              "description": "A point in the curve.",
+                              "properties": {
+                                "x": {
+                                  "type": "number",
+                                  "description": "X coordinate of curve point."
+                                },
+                                "y": {
+                                  "type": "number",
+                                  "description": "Y coordinate of curve point."
+                                },
+                                "shape": {
+                                  "type": "string",
+                                  "description": "Shape of the curve segment between this point and the next.",
+                                  "enum": [
+                                    "Constant",
+                                    "Linear",
+                                    "Log3",
+                                    "Log2",
+                                    "Log1",
+                                    "InvertedSCurve",
+                                    "SCurve",
+                                    "Exp1",
+                                    "Exp2",
+                                    "Exp3"
+                                  ]
+                                }
+                              },
+                              "required": ["x", "y", "shape"],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": ["type", "points"],
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                },
+                "required": ["type", "name"],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "required": ["object"],
+        "additionalProperties": false
+      }
+    },
+    "platform": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-zA-Z_]+[a-zA-Z_0-9()]*$",
+          "description": "The name of the object."
+        },
+        {
+          "type": "string",
+          "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+          "description": "An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+        }
+      ],
+      "description": "Unless overriden by an individual \"object\", the ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms."
+    },
+    "onNameConflict": {
+      "type": "string",
+      "description": "Unless overriden by an individual \"object\", the action to take if \"object\" already has a child with the same name. Default value is \"fail\". Refer to \\ref waapi_create_objects_modes for more information.",
+      "enum": ["rename", "replace", "fail", "merge"]
+    },
+    "listMode": {
+      "type": "string",
+      "description": "Unless overriden by an individual \"object\", the action to take if \"object\" already has objects in a specified list. Default value is \"append\". Refer to \\ref waapi_set_lists_modes for more information.",
+      "enum": ["replaceAll", "append"]
+    },
+    "autoAddToSourceControl": {
+      "type": "boolean",
+      "description": "Determines if Wwise automatically performs an Add or Checkout source control operation for affected work units. Defaults to false."
+    }
+  },
+  "required": ["objects"],
+  "additionalProperties": false
+}
