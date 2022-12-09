@@ -1,0 +1,409 @@
+{
+  "type": "object",
+  "properties": {
+    "return": {
+      "type": "array",
+      "description": "An array of objects found, with properties matching what was supplied in the options.",
+      "items": {
+        "type": "object",
+        "description": "Wwise object\\n A Wwise object. Use the return options to specify which property is required.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+            "description": "The ID (GUID) of the object.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the object."
+          },
+          "notes": {
+            "type": "string",
+            "description": "The notes of the object."
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the object. Refer to \\ref wobjects_index for more information on the types available."
+          },
+          "pluginName": {
+            "type": "string",
+            "description": "The name of the plug-in for Source, Effect, Mixer, Device and Metadata plug-in."
+          },
+          "path": {
+            "type": "string",
+            "description": "The path of the object from the project root. Ex: '\\\\Actor-Mixer Hierarchy\\\\Default Work Unit\\\\Sound1'"
+          },
+          "parent": {
+            "type": "object",
+            "description": "The parent of the object in the hierarchy.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "The ID (GUID) of the object.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the object."
+              }
+            }
+          },
+          "owner": {
+            "type": "object",
+            "description": "The owner of the object. This applies to objects being locally owned by other objects, such as custom effects, custom attenuations, etc.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "The ID (GUID) of the object.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the object."
+              }
+            }
+          },
+          "isPlayable": {
+            "type": "boolean",
+            "description": "True if the object can be played in Transport."
+          },
+          "shortId": {
+            "type": "integer",
+            "description": "The Short ID of the object."
+          },
+          "classId": {
+            "type": "integer",
+            "description": "The class ID of the object.\\n Unsigned Integer 32-bit.",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "category": {
+            "type": "string",
+            "description": "The category of the object. Ex: 'Actor-Mixer Hierarchy'"
+          },
+          "filePath": {
+            "type": "string",
+            "description": "The path to the file containing the object. The path can be a Work Unit file or a project file. For using WAAPI on Mac, please refer to \\ref waapi_path_on_mac ."
+          },
+          "workunit": {
+            "type": "object",
+            "description": "The parent Work Unit containing the object. The 'id' and the 'name' is returned.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "The ID (GUID) of the object.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the object."
+              }
+            }
+          },
+          "childrenCount": {
+            "type": "number",
+            "description": "The number of children for the object."
+          },
+          "totalSize": {
+            "type": "integer",
+            "description": "The amount of space (in bytes) this object and all of its children take up in a SoundBank. This does not include the objectSize. Note that SoundBanks need to be generated for this value to be accurate."
+          },
+          "mediaSize": {
+            "type": "integer",
+            "description": "The total converted size (in bytes) of the media files of this object and all of its children. Note that SoundBanks need to be generated for this value to be accurate."
+          },
+          "objectSize": {
+            "type": "integer",
+            "description": "The amount of space (in bytes) the meta-data of the object takes up in a SoundBank. This does not include media files. Note that SoundBanks need to be generated for this value to be accurate."
+          },
+          "structureSize": {
+            "type": "integer",
+            "description": "The amount of space (in bytes) the meta-data of the object and all of its children take up in a SoundBank. This does not include media files. Note that SoundBanks need to be generated for this value to be accurate."
+          },
+          "musicTransitionRoot": {
+            "type": "object",
+            "description": "The music transition root containing all other music transitions recursively.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "The ID (GUID) of the object.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              }
+            }
+          },
+          "musicPlaylistRoot": {
+            "type": "object",
+            "description": "The music playlist root containing all other music playlist items recursively. This applies to Music Playlist Containers only.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "The ID (GUID) of the object.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              }
+            }
+          },
+          "originalWavFilePath": {
+            "type": "string",
+            "description": "(DEPRECATED) Absolute path to the original wav file. Only valid for Sound and Audio Source objects. For using WAAPI on Mac, please refer to \\ref waapi_path_on_mac ."
+          },
+          "originalFilePath": {
+            "type": "string",
+            "description": "Absolute path to the original file. Only valid for Sound and Audio Source objects. For using WAAPI on Mac, please refer to \\ref waapi_path_on_mac ."
+          },
+          "activeSource": {
+            "type": "object",
+            "description": "The active source of the sound object.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "The ID (GUID) of the object.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the object."
+              }
+            }
+          },
+          "convertedWemFilePath": {
+            "type": "string",
+            "description": "(DEPRECATED) Absolute path to the converted wem file. Specify the platform in the options. Only valid for Sound and Audio Source objects. To use WAAPI on Mac, please refer to \\ref waapi_path_on_mac ."
+          },
+          "convertedFilePath": {
+            "type": "string",
+            "description": "Absolute path to the converted file. Specify the platform in the options. Only valid for Sound and Audio Source objects. To use WAAPI on Mac, please refer to \\ref waapi_path_on_mac ."
+          },
+          "soundbankBnkFilePath": {
+            "type": "string",
+            "description": "Absolute path to the generated SoundBank file associated with the SoundBank object. Only valid for SoundBank objects. To use WAAPI on Mac, please refer to \\ref waapi_path_on_mac ."
+          },
+          "playbackDuration": {
+            "type": "object",
+            "description": "The duration root that contains the min and max durations and duration type. Note, this is deprecated. The duration should be used instead. This applies to all objects that can contain Audio Source objects, either directly as a source or indirectly through descendants.",
+            "properties": {
+              "playbackDurationMin": {
+                "type": "number",
+                "description": "The minimum possible time playback can take."
+              },
+              "playbackDurationMax": {
+                "type": "number",
+                "description": "The maximum possible time playback can take."
+              },
+              "playbackDurationType": {
+                "type": "string",
+                "description": "The type of duration."
+              }
+            }
+          },
+          "duration": {
+            "type": "object",
+            "description": "The duration root that contains the min and max durations and duration type. This applies to all objects that can contain Audio Source objects, either directly as a source or indirectly through descendants.",
+            "properties": {
+              "min": {
+                "type": "number",
+                "description": "The minimum possible time playback can take."
+              },
+              "max": {
+                "type": "number",
+                "description": "The maximum possible time playback can take."
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of duration."
+              }
+            }
+          },
+          "maxDurationSource": {
+            "type": "object",
+            "description": "Audio source with the longest duration. This applies to all objects that can contain Audio Source objects, either directly as a source or indirectly through descendants.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "The ID (GUID) of the audio source object with the longest duration.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              },
+              "trimmedDuration": {
+                "type": "number",
+                "description": "The duration in seconds of the longest trimmed source."
+              }
+            }
+          },
+          "audioSourceTrimValues": {
+            "type": "object",
+            "description": "Range of time for which the audio source is trimmed.",
+            "properties": {
+              "trimBegin": {
+                "type": "number",
+                "description": "The time value in seconds of the start trim."
+              },
+              "trimEnd": {
+                "type": "number",
+                "description": "The time value in seconds of the end trim."
+              }
+            }
+          },
+          "maxRadiusAttenuation": {
+            "type": "object",
+            "description": "Attenuation with the largest radius. This applies to all objects that can contain Audio Source objects, either directly as a source or indirectly through descendants.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "The ID (GUID) of the attenuation object with the largest radius.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              },
+              "radius": {
+                "type": "number",
+                "description": "The radius of the attenuation object."
+              }
+            }
+          },
+          "audioSourceLanguage": {
+            "type": "object",
+            "description": "Language associated to the audio source. This only applies to Audio Source objects directly.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "The ID (GUID) of the Language object to which the Audio Source object is associated.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the Language object to which the Audio Source object is associated."
+              }
+            }
+          },
+          "workunitIsDefault": {
+            "type": "boolean",
+            "description": "True if the work unit is the default."
+          },
+          "workunitType": {
+            "type": "string",
+            "description": "The type of the Work Unit. Please note that, like Work Units, physical folders have the type \"WorkUnit\". Physical folders have the workunitType \"folder\".",
+            "enum": ["folder", "rootFile", "nestedFile"]
+          },
+          "workunitIsDirty": {
+            "type": "boolean",
+            "description": "True if a Work Unit or a Project (wproj file) is dirty, meaning it was modified but not saved."
+          },
+          "switchContainerChildContext": {
+            "type": "object",
+            "description": "The context object associated with the child of a Switch Container. This object holds the properties associated with the child that are context-dependent for the Switch Container (for example: the properties of the '1st only' checkbox).",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                "description": "The ID (GUID) of the object.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+              }
+            }
+          },
+          "isExplicitMute": {
+            "type": "boolean",
+            "description": "Whether or not the object has been muted explicitly. Explicitly muting an object implicitly mutes the descendant objects."
+          },
+          "isExplicitSolo": {
+            "type": "boolean",
+            "description": "Whether or not the object has been soloed explicitly. Soloing an object silences all the other objects in the project except this one."
+          },
+          "isImplicitMute": {
+            "type": "boolean",
+            "description": "Whether or not the object has been muted implicitly. Explicitly muting an object implicitly mutes the descendant objects."
+          },
+          "isImplicitSolo": {
+            "type": "boolean",
+            "description": "Whether or not the object has been soloed implicitly. Soloing an object silences all the other objects in the project except this one."
+          },
+          "points": {
+            "type": "array",
+            "description": "This only applies to Curve objects.\\n An array of points defining a curve.",
+            "items": {
+              "type": "object",
+              "description": "A point in the curve.",
+              "properties": {
+                "x": {
+                  "type": "number",
+                  "description": "X coordinate of curve point."
+                },
+                "y": {
+                  "type": "number",
+                  "description": "Y coordinate of curve point."
+                },
+                "shape": {
+                  "type": "string",
+                  "description": "Shape of the curve segment between this point and the next.",
+                  "enum": [
+                    "Constant",
+                    "Linear",
+                    "Log3",
+                    "Log2",
+                    "Log1",
+                    "InvertedSCurve",
+                    "SCurve",
+                    "Exp1",
+                    "Exp2",
+                    "Exp3"
+                  ]
+                }
+              },
+              "required": ["x", "y", "shape"],
+              "additionalProperties": false
+            }
+          }
+        },
+        "patternProperties": {
+          "^((@?@?[a-zA-Z0-9:_]+)|[a-zA-Z]+\\‍(.+\\‍))(\\.@?@?[a-zA-Z0-9:_]+|[a-zA-Z]+\\‍(.+\\‍))*$": {
+            "description": "Specifies dot-separated accessors that form a query and yields a property value or an object reference. A single @ specifies the value of the property for the associated object. A double @@ specifies the value of the property for the source of override. Refer to \\ref wobjects_index for more information on the properties and references for all types available.",
+            "anyOf": [
+              {
+                "type": "string",
+                "description": "A string value."
+              },
+              {
+                "type": "number",
+                "description": "A numeric value."
+              },
+              {
+                "type": "boolean",
+                "description": "A boolean value."
+              },
+              {
+                "type": "object",
+                "description": "An object reference value.",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                    "description": "The ID (GUID) of the object.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the object."
+                  }
+                }
+              },
+              {
+                "type": "array",
+                "description": "An object list reference value.",
+                "items": {
+                  "type": "object",
+                  "description": "An object reference value.",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+                      "description": "The ID (GUID) of the object.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the object."
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
