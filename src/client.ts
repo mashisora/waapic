@@ -1,5 +1,9 @@
 import { Session, Connection } from 'autobahn';
-import { GetArguments, GetOptions } from './types/core/object/get';
+import getObjectsImpl, {
+  GetArguments,
+  GetOptions,
+} from './function/get-objects';
+import { IObject } from './types/shared/object';
 
 export class Client {
   session: Session;
@@ -44,6 +48,7 @@ export function connect(host: string): Promise<WaapiClient> {
       reject(new Error(`Session closed: ${reason} ${details}`));
       return true;
     };
+
     connection.onopen = (session) =>
       resolve(new WaapiClient(session, connection));
     connection.open();
@@ -51,6 +56,8 @@ export function connect(host: string): Promise<WaapiClient> {
 }
 
 export class WaapiClient extends Client {
-  getObject = (args: GetArguments, opts: GetOptions) =>
-    this.call('ak.wwise.core.object.get', args, opts);
+  getObjects = async (
+    args: GetArguments,
+    opts: GetOptions
+  ): Promise<IObject[]> => getObjectsImpl(this, args, opts);
 }

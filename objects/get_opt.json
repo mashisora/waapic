@@ -1,0 +1,110 @@
+{
+  "type": "object",
+  "description": "Specifies the return options for every object returned.\\n Object specifying the options for the results.",
+  "properties": {
+    "return": {
+      "type": "array",
+      "description": "Specifies what is being returned for every object. Refer to \\ref wobjects_index for more information on the properties and references available.\\n The array of return expressions defines which elements of the Wwise object is returned. This can include built-in accessors, such as the name or id, or object properties, such as the Volume or the Pitch.",
+      "items": {
+        "description": "A return expression.",
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Specifies one or many of the built-in accessors for Wwise objects.",
+            "enum": [
+              "id",
+              "name",
+              "notes",
+              "type",
+              "pluginName",
+              "shortId",
+              "classId",
+              "category",
+              "filePath",
+              "workunit",
+              "parent",
+              "owner",
+              "path",
+              "isPlayable",
+              "childrenCount",
+              "totalSize",
+              "mediaSize",
+              "objectSize",
+              "structureSize",
+              "sound:convertedWemFilePath",
+              "sound:originalWavFilePath",
+              "soundbank:bnkFilePath",
+              "music:transitionRoot",
+              "music:playlistRoot",
+              "audioSource:playbackDuration",
+              "audioSource:maxDurationSource",
+              "audioSource:trimValues",
+              "audioSource:maxRadiusAttenuation",
+              "audioSource:language",
+              "workunit:isDefault",
+              "workunit:type",
+              "workunit:isDirty",
+              "switchContainerChild:context",
+              "convertedWemFilePath",
+              "originalFilePath",
+              "convertedFilePath",
+              "originalWavFilePath",
+              "soundbankBnkFilePath",
+              "musicTransitionRoot",
+              "musicPlaylistRoot",
+              "playbackDuration",
+              "duration",
+              "maxDurationSource",
+              "audioSourceTrimValues",
+              "maxRadiusAttenuation",
+              "audioSourceLanguage",
+              "workunitIsDefault",
+              "workunitType",
+              "workunitIsDirty",
+              "switchContainerChildContext",
+              "isExplicitMute",
+              "isExplicitSolo",
+              "isImplicitMute",
+              "isImplicitSolo",
+              "points"
+            ]
+          },
+          {
+            "type": "string",
+            "description": "Specifies one or many dot-separated accessors that form a query and yields a value or an object reference. Specifying a single @ returns the value of the property for the associated object. Specifying a double @@ returns the value of the property for the source of override. Refer to \\ref wobjects_index .",
+            "pattern": "^((@?@?[a-zA-Z0-9:_]+)|[a-zA-Z]+\\‍(.+\\‍))(\\.@?@?[a-zA-Z0-9:_]+|[a-zA-Z]+\\‍(.+\\‍))*$"
+          }
+        ]
+      }
+    },
+    "platform": {
+      "anyOf": [
+        {
+          "type": "string",
+          "description": "The name of the platform."
+        },
+        {
+          "type": "string",
+          "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+          "description": "The id of the platform.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+        }
+      ],
+      "description": "The ID (GUID) or name of the platform. This is an optional argument. When not specified, the current platform is used."
+    },
+    "language": {
+      "anyOf": [
+        {
+          "type": "string",
+          "description": "The name of the language."
+        },
+        {
+          "type": "string",
+          "pattern": "^\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}$",
+          "description": "The id of the language.\\n An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}."
+        }
+      ],
+      "description": "The ID (GUID) or name of the language."
+    }
+  },
+  "additionalProperties": false
+}
