@@ -6,10 +6,7 @@ import { compileFromFile } from 'json-schema-to-typescript';
 const client = await connect('ws://127.0.0.1:8080/waapi');
 
 try {
-  await client.createTransport({
-    object: '{05EFE641-AE02-48AB-939E-E86C261187AE}',
-  });
-  await client.exec({ action: 'play' });
+  await client.call('ak.wwise.core.audio.importTabDelimited');
 } catch (err) {
   console.log(err);
 }

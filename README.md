@@ -14,3 +14,11 @@ A Wwise Authoring API Utils Library in TypeScript.
 const client = await waapi.connect('ws://127.0.0.1:8080/waapi');
 const wwiseInfo = await client.call.core.getInfo();
 ```
+
+## TODO: APIs
+
+```ts
+// Get Object(s)
+client.queryObjects(waql, opts);
+client.getSelectedObjects(opts);
+```

@@ -1,3 +1,5 @@
+// REVIEWED
+
 export namespace ConvertExternalSources {
   export interface Arguments {
     /** An array of external sources files and corrisponding arguments. */
@@ -5,8 +7,8 @@ export namespace ConvertExternalSources {
       /** The path to the wsources file. */
       input: string;
       /** The platform to convert external sources for. */
-      platform: string | string;
-      /** Optional argument for the path of the output folder to be generated. The default path is WwiseProject/.cache/ExternalSources/Platform. */
+      platform: string;
+      /** Optional argument for the path of the output folder to be generated. */
       output?: string;
     }[];
   }
@@ -18,27 +20,26 @@ export namespace Generate {
     soundbanks?: {
       /** The name of the SoundBank to generate, a temporary SoundBank will be created if the SoundBank doesn't exists. */
       name: string;
-      /** List of events to include in this SoundBank. Not required if the bank already exists. */
+      /** List of ID (GUID), name, or path of the event to include in the SoundBank. */
       events?: string[];
-      /** List of AuxBus to include in this SoundBank. */
+      /** List of ID (GUID), name, or path of the Auxiliary Bus to include in the SoundBank. */
       auxBusses?: string[];
-      /** List of inclusion type to use for this SoundBank. Not required if the bank already exists. */
+      /** List of inclusion type to use for this SoundBank. */
       inclusions?: ('event' | 'structure' | 'media')[];
-      /** Force rebuild of this particuliar SoundBank. Default value: false */
+      /** Force rebuild of this particuliar SoundBank. */
       rebuild?: boolean;
-      [k: string]: unknown;
     }[];
     /** List of platforms to generate. If you don't specify any platforms, all the platforms will be generated */
     platforms?: string[];
     /** List of languages to generate. If you don't specify any languages, all the languages will be generated. */
     languages?: string[];
-    /** By default, if you don't specify any languages all languages will be generated. If you set this parameter to true, no localized SoundBank will be generated. */
+    /** If you set this parameter to true, no localized SoundBank will be generated. */
     skipLanguages?: boolean;
-    /** Will rebuild all SoundBanks if true. If you want to clear the converted media as well, use clearAudioFileCache parameter. Default value: false */
+    /** Will rebuild all SoundBanks if true. */
     rebuildSoundBanks?: boolean;
-    /** Deletes the content of the Wwise audio file cache folder prior to converting source files and generating SoundBanks, which ensures that all source files are reconverted. Note that the whole cache is cleared, for all platforms, regardless of the platforms arguments. Default value: false */
+    /** Deletes the content of the Wwise audio file cache folder prior to converting source files and generating SoundBanks, which ensures that all source files are reconverted. */
     clearAudioFileCache?: boolean;
-    /** Use the normal SoundBank generation process and write the sound bank and info file to disk. Default value: false */
+    /** Use the normal SoundBank generation process and write the sound bank and info file to disk. */
     writeToDisk?: boolean;
     /** If you don't use rebuildSoundBanks, use this option to force a rebuild of the Init bank for each specified platform. */
     rebuildInitBank?: boolean;

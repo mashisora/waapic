@@ -1,3 +1,5 @@
+// REVIEWED
+
 export namespace Import {
   export interface Arguments {
     /** Determines how import object creation is performed. */
