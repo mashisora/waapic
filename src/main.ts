@@ -6,6 +6,7 @@ import { compileFromFile } from 'json-schema-to-typescript';
 const client = await connect('ws://127.0.0.1:8080/waapi');
 
 try {
+  await client.call('ak.wwise.core.audio.import', { imports: [] });
 } catch (err) {
   console.log(err);
 }
