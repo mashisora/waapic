@@ -1,4 +1,4 @@
-export namespace ImoprtAudio {
+export namespace Imoprt {
   export interface Arguments {
     /** Determines how import object creation is performed. */
     importOperation?: 'createNew' | 'useExisting' | 'replaceExisting';
