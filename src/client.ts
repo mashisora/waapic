@@ -1,4 +1,5 @@
 import { Session, Connection } from 'autobahn';
+import { Import } from './types/audio';
 import { Copy, Diff, Get, Set, SetRandomizer } from './types/object';
 
 export class Client {
@@ -69,4 +70,7 @@ export class WaapiClient extends Client {
 
   setRandomizer = async (args: SetRandomizer.Arguments): Promise<void> =>
     await this.call('ak.wwise.core.object.setRandomizer', args);
+
+  import = async (args: Import.Arguments): Promise<Import.Result> =>
+    await this.call('ak.wwise.core.audio.import', args);
 }

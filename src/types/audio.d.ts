@@ -1,4 +1,4 @@
-export namespace Imoprt {
+export namespace Import {
   export interface Arguments {
     /** Determines how import object creation is performed. */
     importOperation?: 'createNew' | 'useExisting' | 'replaceExisting';
