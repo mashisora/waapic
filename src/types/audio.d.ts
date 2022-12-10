@@ -1,5 +1,3 @@
-// REVIEWED
-
 export namespace Import {
   export interface Arguments {
     /** Determines how import object creation is performed. */
@@ -33,6 +31,30 @@ export namespace Import {
       /** Sets the value of property @propertyName. */
       [property: `@${string}`]: null | string | number | boolean;
     }[];
+    /** Determines if Wwise automatically performs an Add or Checkout operation on the imported files with the source control. Defaults to false. */
+    autoAddToSourceControl?: boolean;
+  }
+
+  export interface Result {
+    objects: {
+      /** The ID (GUID) of the created object. */
+      id: string;
+      /** The name of the created object. */
+      name: string;
+    }[];
+  }
+}
+
+export namespace ImportTabDelimited {
+  export interface Arguments {
+    /** Object ID (GUID), name, or path used as root relative object paths. */
+    importLocation?: string;
+    /** Imports language for audio file import (taken from the project's defined languages, found in the WPROJ file LanguageList). */
+    importLanguage: string;
+    /** Determines how import object creation is performed. */
+    importOperation: 'createNew' | 'useExisting' | 'replaceExisting';
+    /** Location of tab-delimited import file. */
+    importFile: string;
     /** Determines if Wwise automatically performs an Add or Checkout operation on the imported files with the source control. Defaults to false. */
     autoAddToSourceControl?: boolean;
   }

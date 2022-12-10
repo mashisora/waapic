@@ -1,3 +1,5 @@
+// REVIEWED
+
 export namespace AddAssignment {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to assign to a State. This object must be the child of a Switch Container. */
@@ -12,6 +14,7 @@ export namespace GetAssignments {
     /** The ID (GUID), name, or path of the Switch Container. */
     id: string;
   }
+
   export interface Result {
     /** List of assignments (pairs of child and state). */
     return: {

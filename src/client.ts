@@ -1,6 +1,7 @@
 import { Session, Connection } from 'autobahn';
 import { Import } from './types/audio';
 import { Copy, Diff, Get, Set, SetRandomizer } from './types/object';
+import { Create, ExecuteAction } from './types/transport';
 
 export class Client {
   session: Session;
@@ -73,4 +74,9 @@ export class WaapiClient extends Client {
 
   import = async (args: Import.Arguments): Promise<Import.Result> =>
     await this.call('ak.wwise.core.audio.import', args);
+
+  exec = async (args: ExecuteAction.Arguments) =>
+    await this.call('ak.wwise.core.transport.executeAction', args);
+  createTransport = async (args: Create.Arguments) =>
+    await this.call('ak.wwise.core.transport.create', args);
 }

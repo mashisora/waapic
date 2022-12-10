@@ -1,3 +1,5 @@
+// REVIEWED
+
 export namespace Create {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to control via the transport object. */
@@ -8,7 +10,7 @@ export namespace Create {
 
   export interface Result {
     /** Transport object ID to be used with all other ak.wwise.core.transport functions. Unsigned Integer 32-bit. */
-    transport?: number;
+    transport: number;
   }
 }
 
