@@ -4,7 +4,7 @@ export namespace Copy {
     object: string;
     /** The ID (GUID), name, or path of the object's new parent. */
     parent: string;
-    /** The action to take if 'parent' already has a child with the same name. Default value is 'fail'. */
+    /** The action to take if 'parent' already has a child with the same name. */
     onNameConflict?: 'rename' | 'replace' | 'fail';
   }
 
@@ -22,7 +22,7 @@ export namespace Move {
     object: string;
     /** The ID (GUID), name, or path of the object's new parent. */
     parent: string;
-    /** The action to take if 'parent' already has a child with the same name. Default value is 'fail'. */
+    /** The action to take if 'parent' already has a child with the same name. */
     onNameConflict?: 'rename' | 'replace' | 'fail';
   }
 
@@ -40,11 +40,11 @@ export namespace Create {
     parent: string;
     /** The name of the list in which to insert the object. If this argument is set, the object gets inserted in a list owned by the parent and not as a child. */
     list?: string;
-    /** The action to take if 'parent' already has a child with the same name. Default value is 'fail'. */
+    /** The action to take if 'parent' already has a child with the same name. */
     onNameConflict?: 'rename' | 'replace' | 'fail' | 'merge';
     /** The ID (GUID) or unique name of the platform used when setting properties via this command. Not specifying a platform sets the value for all linked platforms. */
     platform?: string;
-    /** Determines if Wwise automatically performs an Add or Checkout source control operation for affected work units. Defaults to false. */
+    /** Determines if Wwise automatically performs an Add or Checkout source control operation for affected work units. */
     autoAddToSourceControl?: boolean;
     /** The type of the new object. */
     type: string;
@@ -422,7 +422,7 @@ export namespace PasteProperties {
     source: string;
     /** Array of target objects to paste into. */
     targets: string[];
-    /** Paste mode for lists. Default value is 'replaceEntire'. With 'replaceEntire' all elements in the lists of a target object are removed and all selected elements from the source's lists are copied. Conversely, with 'addReplace' and 'addKeep' elements in a target which are not in the source are not removed. Elements in the source's list which are not in a target's list are added to the target. For elements which are common to the source and a target 'addReplace' will copy the one from the source, replacing the target's element, whereas 'addKeep' will retain the element in the target. */
+    /** Paste mode for lists. */
     pasteMode?: 'replaceEntire' | 'addReplace' | 'addKeep';
     /** Array of properties, references and lists to include in the paste operation. When not specified, all properties, references and lists are included, and the exclusion defines which ones to exclude */
     inclusion?: string[];
@@ -439,9 +439,9 @@ export namespace Set {
       object: string;
       /** The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms. */
       platform?: string;
-      /** The action to take if 'object' already has a child with the same name. Default value is 'fail'. */
+      /** The action to take if 'object' already has a child with the same name. */
       onNameConflict?: 'rename' | 'replace' | 'fail' | 'merge';
-      /** The action to take if 'object' already has objects in a specified list. Default value is 'append'. */
+      /** The action to take if 'object' already has objects in a specified list. */
       listMode?: 'replaceAll' | 'append';
       /** The new name of 'object'. */
       name?: string;
@@ -454,11 +454,11 @@ export namespace Set {
     }[];
     /** Unless overriden by an individual 'object', the ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms. */
     platform?: string;
-    /** Unless overriden by an individual 'object', the action to take if 'object' already has a child with the same name. Default value is 'fail'. */
+    /** Unless overriden by an individual 'object', the action to take if 'object' already has a child with the same name. */
     onNameConflict?: 'rename' | 'replace' | 'fail' | 'merge';
-    /** Unless overriden by an individual 'object', the action to take if 'object' already has objects in a specified list. Default value is 'append'. */
+    /** Unless overriden by an individual 'object', the action to take if 'object' already has objects in a specified list. */
     listMode?: 'replaceAll' | 'append';
-    /** Determines if Wwise automatically performs an Add or Checkout source control operation for affected work units. Defaults to false. */
+    /** Determines if Wwise automatically performs an Add or Checkout source control operation for affected work units. */
     autoAddToSourceControl?: boolean;
   }
 

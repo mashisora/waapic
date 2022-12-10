@@ -33,7 +33,7 @@ export namespace Import {
       /** Sets the value of property @propertyName. */
       [property: `@${string}`]: null | string | number | boolean;
     }[];
-    /** Determines if Wwise automatically performs an Add or Checkout operation on the imported files with the source control. Defaults to false. */
+    /** Determines if Wwise automatically performs an Add or Checkout operation on the imported files with the source control. */
     autoAddToSourceControl?: boolean;
   }
 
@@ -57,7 +57,7 @@ export namespace ImportTabDelimited {
     importOperation: 'createNew' | 'useExisting' | 'replaceExisting';
     /** Location of tab-delimited import file. */
     importFile: string;
-    /** Determines if Wwise automatically performs an Add or Checkout operation on the imported files with the source control. Defaults to false. */
+    /** Determines if Wwise automatically performs an Add or Checkout operation on the imported files with the source control. */
     autoAddToSourceControl?: boolean;
   }
 
