@@ -9,8 +9,8 @@ try {
 } catch (err) {
   console.log(err);
 }
-import { Create } from './types/object';
-const a = {} as Create.Arguments;
+import { CreateObject } from './types/object';
+const a = {} as CreateObject.Arguments;
 
 let b = a['@123'];
 b = '1';

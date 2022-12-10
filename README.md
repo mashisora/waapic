@@ -1,6 +1,6 @@
-# waapi
+# waapi-utils
 
-A TypeScript Wrapper of Wwise Authoring API.
+A Wwise Authoring API Utils Library in TypeScript.
 
 ## Usage
 

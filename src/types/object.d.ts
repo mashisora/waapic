@@ -1,46 +1,46 @@
-export namespace Copy {
+export namespace CopyObject {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be copied. */
     object: string;
     /** The ID (GUID), name, or path of the object's new parent. */
     parent: string;
-    /** The action to take if "parent" already has a child with the same name. Default value is "fail". */
+    /** The action to take if 'parent' already has a child with the same name. Default value is 'fail'. */
     onNameConflict?: 'rename' | 'replace' | 'fail';
   }
 
   export interface Result {
-    /** The ID (GUID) of the object. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+    /** The ID (GUID) of the copied object. */
     id: string;
-    /** The name of the object. */
+    /** The name of the copied object. */
     name: string;
   }
 }
 
-export namespace Move {
+export namespace MoveObject {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be moved. */
     object: string;
     /** The ID (GUID), name, or path of the object's new parent. */
     parent: string;
-    /** The action to take if "parent" already has a child with the same name. Default value is "fail". */
+    /** The action to take if 'parent' already has a child with the same name. Default value is 'fail'. */
     onNameConflict?: 'rename' | 'replace' | 'fail';
   }
 
   export interface Result {
-    /** The ID (GUID) of the object. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+    /** The ID (GUID) of the moved object. */
     id: string;
-    /** The name of the object. */
+    /** The name of the moved object. */
     name: string;
   }
 }
 
-export namespace Create {
+export namespace CreateObject {
   export interface Arguments {
     /** The ID (GUID), name, or path of the parent of the new object. */
     parent: string;
     /** The name of the list in which to insert the object. If this argument is set, the object gets inserted in a list owned by the parent and not as a child. */
     list?: string;
-    /** The action to take if "parent" already has a child with the same name. Default value is "fail". */
+    /** The action to take if 'parent' already has a child with the same name. Default value is 'fail'. */
     onNameConflict?: 'rename' | 'replace' | 'fail' | 'merge';
     /** The ID (GUID) or unique name of the platform used when setting properties via this command. Not specifying a platform sets the value for all linked platforms. */
     platform?: string;
@@ -72,7 +72,7 @@ export namespace Create {
   }[];
 
   export interface Result {
-    /** The ID (GUID) of the newly created Object. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+    /** The ID (GUID) of the newly created Object. */
     id: string;
     /** The name of the newly created Object. */
     name: string;
@@ -81,14 +81,14 @@ export namespace Create {
   }
 }
 
-export namespace Delete {
+export namespace DeleteObject {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be deleted. */
     object: string;
   }
 }
 
-export namespace Diff {
+export namespace DiffObject {
   export interface Arguments {
     /** The ID (GUID), name, or path of the source object. */
     source: string;
@@ -104,7 +104,7 @@ export namespace Diff {
   }
 }
 
-export namespace Get {
+export namespace GetObject {
   export interface Arguments {
     /** Specifies a query in the WAQL language. */
     waql?: string;
@@ -178,7 +178,7 @@ export namespace Get {
 
   export interface Result {
     return: {
-      /** The ID (GUID) of the object. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+      /** The ID (GUID) of the object. */
       id?: string;
       /** The name of the object. */
       name?: string;
@@ -188,18 +188,18 @@ export namespace Get {
       type?: string;
       /** The name of the plug-in for Source, Effect, Mixer, Device and Metadata plug-in. */
       pluginName?: string;
-      /** The path of the object from the project root. Ex: '\\Actor-Mixer Hierarchy\\Default Work Unit\\Sound1' */
+      /** The path of the object from the project root. */
       path?: string;
       /** The parent of the object in the hierarchy. */
       parent?: {
-        /** The ID (GUID) of the object. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+        /** The ID (GUID) of the object. */
         id?: string;
         /** The name of the object. */
         name?: string;
       };
       /** The owner of the object. This applies to objects being locally owned by other objects, such as custom effects, custom attenuations, etc. */
       owner?: {
-        /** The ID (GUID) of the object. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+        /** The ID (GUID) of the object. */
         id?: string;
         /** The name of the object. */
         name?: string;
@@ -208,15 +208,15 @@ export namespace Get {
       isPlayable?: boolean;
       /** The Short ID of the object. */
       shortId?: number;
-      /** The class ID of the object. Unsigned Integer 32-bit. */
+      /** The class ID of the object. */
       classId?: number;
-      /** The category of the object. Ex: 'Actor-Mixer Hierarchy' */
+      /** The category of the object. */
       category?: string;
       /** The path to the file containing the object. The path can be a Work Unit file or a project file. */
       filePath?: string;
       /** The parent Work Unit containing the object. */
       workunit?: {
-        /** The ID (GUID) of the object. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+        /** The ID (GUID) of the object. */
         id?: string;
         /** The name of the object. */
         name?: string;
@@ -233,19 +233,19 @@ export namespace Get {
       structureSize?: number;
       /** The music transition root containing all other music transitions recursively. */
       musicTransitionRoot?: {
-        /** The ID (GUID) of the object. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+        /** The ID (GUID) of the object. */
         id?: string;
       };
       /** The music playlist root containing all other music playlist items recursively. This applies to Music Playlist Containers only. */
       musicPlaylistRoot?: {
-        /** The ID (GUID) of the object. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+        /** The ID (GUID) of the object. */
         id?: string;
       };
       /** Absolute path to the original file. Only valid for Sound and Audio Source objects. */
       originalFilePath?: string;
       /** The active source of the sound object. */
       activeSource?: {
-        /** The ID (GUID) of the object. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+        /** The ID (GUID) of the object. */
         id?: string;
         /** The name of the object. */
         name?: string;
@@ -265,7 +265,7 @@ export namespace Get {
       };
       /** Audio source with the longest duration. This applies to all objects that can contain Audio Source objects, either directly as a source or indirectly through descendants. */
       maxDurationSource?: {
-        /** The ID (GUID) of the audio source object with the longest duration. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+        /** The ID (GUID) of the audio source object with the longest duration. */
         id?: string;
         /** The duration in seconds of the longest trimmed source. */
         trimmedDuration?: number;
@@ -279,27 +279,27 @@ export namespace Get {
       };
       /** Attenuation with the largest radius. This applies to all objects that can contain Audio Source objects, either directly as a source or indirectly through descendants. */
       maxRadiusAttenuation?: {
-        /** The ID (GUID) of the attenuation object with the largest radius. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+        /** The ID (GUID) of the attenuation object with the largest radius. */
         id?: string;
         /** The radius of the attenuation object. */
         radius?: number;
       };
       /** Language associated to the audio source. This only applies to Audio Source objects directly. */
       audioSourceLanguage?: {
-        /** The ID (GUID) of the Language object to which the Audio Source object is associated. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+        /** The ID (GUID) of the Language object to which the Audio Source object is associated. */
         id?: string;
         /** The name of the Language object to which the Audio Source object is associated. */
         name?: string;
       };
       /** True if the work unit is the default. */
       workunitIsDefault?: boolean;
-      /** The type of the Work Unit. Please note that, like Work Units, physical folders have the type "WorkUnit". Physical folders have the workunitType "folder". */
+      /** The type of the Work Unit. Please note that, like Work Units, physical folders have the type 'WorkUnit'. Physical folders have the workunitType 'folder'. */
       workunitType?: 'folder' | 'rootFile' | 'nestedFile';
       /** True if a Work Unit or a Project (wproj file) is dirty, meaning it was modified but not saved. */
       workunitIsDirty?: boolean;
       /** The context object associated with the child of a Switch Container. This object holds the properties associated with the child that are context-dependent for the Switch Container (for example: the properties of the '1st only' checkbox). */
       switchContainerChildContext?: {
-        /** The ID (GUID) of the object. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+        /** The ID (GUID) of the object. */
         id?: string;
       };
       /** Whether or not the object has been muted explicitly. Explicitly muting an object implicitly mutes the descendant objects. */
@@ -390,7 +390,7 @@ export namespace GetPropertyAndReferenceNames {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to watch. */
     object?: string;
-    /** The ID (class ID) of the object to retrieve the property and reference names from. Unsigned Integer 32-bit. */
+    /** The ID (class ID) of the object to retrieve the property and reference names from. */
     classId?: number;
   }
 
@@ -422,7 +422,7 @@ export namespace PasteProperties {
     source: string;
     /** Array of target objects to paste into. */
     targets: string[];
-    /** Paste mode for lists. Default value is "replaceEntire". With "replaceEntire" all elements in the lists of a target object are removed and all selected elements from the source's lists are copied. Conversely, with "addReplace" and "addKeep" elements in a target which are not in the source are not removed. Elements in the source's list which are not in a target's list are added to the target. For elements which are common to the source and a target "addReplace" will copy the one from the source, replacing the target's element, whereas "addKeep" will retain the element in the target. */
+    /** Paste mode for lists. Default value is 'replaceEntire'. With 'replaceEntire' all elements in the lists of a target object are removed and all selected elements from the source's lists are copied. Conversely, with 'addReplace' and 'addKeep' elements in a target which are not in the source are not removed. Elements in the source's list which are not in a target's list are added to the target. For elements which are common to the source and a target 'addReplace' will copy the one from the source, replacing the target's element, whereas 'addKeep' will retain the element in the target. */
     pasteMode?: 'replaceEntire' | 'addReplace' | 'addKeep';
     /** Array of properties, references and lists to include in the paste operation. When not specified, all properties, references and lists are included, and the exclusion defines which ones to exclude */
     inclusion?: string[];
@@ -439,24 +439,24 @@ export namespace Set {
       object: string;
       /** The ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms. */
       platform?: string;
-      /** The action to take if "object" already has a child with the same name. Default value is "fail". */
+      /** The action to take if 'object' already has a child with the same name. Default value is 'fail'. */
       onNameConflict?: 'rename' | 'replace' | 'fail' | 'merge';
-      /** The action to take if "object" already has objects in a specified list. Default value is "append". */
+      /** The action to take if 'object' already has objects in a specified list. Default value is 'append'. */
       listMode?: 'replaceAll' | 'append';
-      /** The new name of "object". */
+      /** The new name of 'object'. */
       name?: string;
-      /** The new notes or comments of "object". */
+      /** The new notes or comments of 'object'. */
       notes?: string;
       /** An array of child objects to be created. */
       children?: Children;
       /** Sets the value of property @propertyName. */
       [property: `@${string}`]: null | string | number | boolean;
     }[];
-    /** Unless overriden by an individual "object", the ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms. */
+    /** Unless overriden by an individual 'object', the ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms. */
     platform?: string;
-    /** Unless overriden by an individual "object", the action to take if "object" already has a child with the same name. Default value is "fail". */
+    /** Unless overriden by an individual 'object', the action to take if 'object' already has a child with the same name. Default value is 'fail'. */
     onNameConflict?: 'rename' | 'replace' | 'fail' | 'merge';
-    /** Unless overriden by an individual "object", the action to take if "object" already has objects in a specified list. Default value is "append". */
+    /** Unless overriden by an individual 'object', the action to take if 'object' already has objects in a specified list. Default value is 'append'. */
     listMode?: 'replaceAll' | 'append';
     /** Determines if Wwise automatically performs an Add or Checkout source control operation for affected work units. Defaults to false. */
     autoAddToSourceControl?: boolean;
@@ -471,7 +471,7 @@ export namespace Set {
     name: string;
     /** The notes or comments of the new object. */
     notes?: string;
-    /** The ID (class ID) of the plug-in. Only specify for Effect or Source plug-ins. Unsigned Integer 32-bit. */
+    /** The ID (class ID) of the plug-in. Only specify for Effect or Source plug-ins. */
     classId?: number;
     /** The ID (GUID) or name of the language. Only use this argument when creating Sound Voice objects. */
     language?: string;
@@ -484,7 +484,7 @@ export namespace Set {
   export interface Result {
     /** Array of {object, created objects} associations for each parent object. */
     objects?: {
-      /** The ID (GUID) of the parent. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+      /** The ID (GUID) of the parent. */
       id: string;
       /** The name of the parent. */
       name: string;
@@ -494,7 +494,7 @@ export namespace Set {
   }
 
   type ChildrenR = {
-    /** The ID (GUID) of the parent. An object GUID of the form: {aabbcc00-1122-3344-5566-77889900aabb}. */
+    /** The ID (GUID) of the parent. */
     id: string;
     /** The name of the parent. */
     name: string;
