@@ -53,7 +53,7 @@ export namespace Create {
     /** The notes or comments of the new object. */
     notes?: string;
     /** Sets the value of property @propertyName. */
-    [property: `@${string}`]: null | string | number | boolean | object;
+    [property: `@${string}`]: null | string | number | boolean;
     /** An array of child objects to be created. */
     children?: Children;
   }
@@ -66,7 +66,7 @@ export namespace Create {
     /** The notes or comments of the new object. */
     notes?: string;
     /** Sets the value of property @propertyName. */
-    [property: `@${string}`]: null | string | number | boolean | object;
+    [property: `@${string}`]: null | string | number | boolean;
     /** An array of child objects to be created. */
     children?: Children;
   }[];
@@ -330,7 +330,7 @@ export namespace Get {
           | 'Exp3';
       }[];
       /** Specifies dot-separated accessors that form a query and yields a property value or an object reference. A single @ specifies the value of the property for the associated object. A double @ specifies the value of the property for the source of override. */
-      [property: `@${string}`]: null | string | number | boolean | object;
+      [property: `@${string}`]: null | string | number | boolean;
     };
   }
 }
@@ -450,7 +450,7 @@ export namespace Set {
       /** An array of child objects to be created. */
       children?: Children;
       /** Sets the value of property @propertyName. */
-      [property: `@${string}`]: null | string | number | boolean | object;
+      [property: `@${string}`]: null | string | number | boolean;
     }[];
     /** Unless overriden by an individual "object", the ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms. */
     platform?: string;
@@ -478,7 +478,7 @@ export namespace Set {
     /** An array of child objects to be created (Recursive). */
     children?: Children;
     /** Sets the value of property @propertyName. */
-    [property: `@${string}`]: null | string | number | boolean | object;
+    [property: `@${string}`]: null | string | number | boolean;
   }[];
 
   export interface Result {
