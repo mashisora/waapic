@@ -1,4 +1,4 @@
-export namespace CopyObject {
+export namespace Copy {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be copied. */
     object: string;
@@ -16,7 +16,7 @@ export namespace CopyObject {
   }
 }
 
-export namespace MoveObject {
+export namespace Move {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be moved. */
     object: string;
@@ -34,7 +34,7 @@ export namespace MoveObject {
   }
 }
 
-export namespace CreateObject {
+export namespace Create {
   export interface Arguments {
     /** The ID (GUID), name, or path of the parent of the new object. */
     parent: string;
@@ -81,14 +81,14 @@ export namespace CreateObject {
   }
 }
 
-export namespace DeleteObject {
+export namespace Delete {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be deleted. */
     object: string;
   }
 }
 
-export namespace DiffObject {
+export namespace Diff {
   export interface Arguments {
     /** The ID (GUID), name, or path of the source object. */
     source: string;
@@ -104,7 +104,7 @@ export namespace DiffObject {
   }
 }
 
-export namespace GetObject {
+export namespace Get {
   export interface Arguments {
     /** Specifies a query in the WAQL language. */
     waql?: string;

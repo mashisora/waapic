@@ -48,3 +48,55 @@ export namespace ImoprtAudio {
     }[];
   }
 }
+
+export namespace GetMinMaxPeaksInRegion {
+  export interface Arguments {
+    /** The ID (GUID), name, or path of the audio source object. */
+    object: string;
+    /** The start time, in seconds, of the section of the audio source for which peaks are required. This number must be smaller than timeTo. */
+    timeFrom: number;
+    /** The end time, in seconds, of the section of the audio source for which peaks are required. This number must be larger than timeFrom. */
+    timeTo: number;
+    /** The number of peaks that are required (minimum 1). */
+    numPeaks: number;
+    /** When true, peaks are calculated globally across channels, instead of per channel. */
+    getCrossChannelPeaks?: boolean;
+  }
+
+  export interface Result {
+    /** An array of binary strings. */
+    peaksBinaryStrings: string[];
+    /** The number of channels of peak data (i.e. the number of strings in peaksBinaryStrings). This is 1 if getCrossChannelPeaks is true. */
+    numChannels: number;
+    /** The maximum value that a peak can take. This can be used to normalize the peaks in the array (between -1, 1), by dividing each by this number. */
+    maxAbsValue: number;
+    /** The number of peaks in the returned min max channel arrays. If peaksArrayLength is less than the numPeaks input argument, this indicates fewer samples were available than numPeaks requested. In this case, the arrays contain all of the sample values within the requested time window. */
+    peaksArrayLength: number;
+    /** The size of the data in the peaks min max arrays. This can be used (in conjunction with peaksArrayLength) to decode the peaksBinaryStrings to 16 bit integer arrays */
+    peaksDataSize: number;
+  }
+}
+
+export namespace GetMinMaxPeaksInTrimmedRegion {
+  export interface Arguments {
+    /** The ID (GUID), name, or path of the audio source. */
+    object: string;
+    /** The number of peaks that are required (minimum 1). */
+    numPeaks: number;
+    /** When true, peaks are calculated globally across channels, instead of per channel. */
+    getCrossChannelPeaks?: boolean;
+  }
+
+  export interface Result {
+    /** An array of binary strings. */
+    peaksBinaryStrings: string[];
+    /** The number of channels of peak data (i.e. the number of strings in peaksBinaryStrings). This is 1 if getCrossChannelPeaks is true. */
+    numChannels: number;
+    /** The maximum value that a peak can take. This can be used to normalize the peaks in the array (between -1, 1), by dividing each by this number. */
+    maxAbsValue: number;
+    /** The number of peaks in the returned min max channel arrays. If peaksArrayLength is less than the numPeaks input argument, this indicates fewer samples were available than numPeaks requested. In this case, the arrays contain all of the sample values within the requested time window. */
+    peaksArrayLength: number;
+    /** The size of the data in the min/max peaks arrays. This can be used (in conjunction with peaksArrayLength) to decode the peaksBinaryStrings to 16 bit integer arrays */
+    peaksDataSize: number;
+  }
+}

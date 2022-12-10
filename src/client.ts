@@ -1,11 +1,5 @@
 import { Session, Connection } from 'autobahn';
-import {
-  CopyObject,
-  DiffObject,
-  GetObject,
-  Set,
-  SetRandomizer,
-} from './types/object';
+import { Copy, Diff, Get, Set, SetRandomizer } from './types/object';
 
 export class Client {
   session: Session;
@@ -59,15 +53,15 @@ export function connect(host: string): Promise<WaapiClient> {
 
 export class WaapiClient extends Client {
   getObjects = async (
-    args: GetObject.Arguments,
-    opts: GetObject.Options
-  ): Promise<GetObject.Result> =>
+    args: Get.Arguments,
+    opts: Get.Options
+  ): Promise<Get.Result> =>
     await this.call('ak.wwise.core.object.get', args, opts);
 
-  copyObject = async (args: CopyObject.Arguments): Promise<CopyObject.Result> =>
+  copyObject = async (args: Copy.Arguments): Promise<Copy.Result> =>
     await this.call('ak.wwise.core.object.copy', args);
 
-  diffObject = async (args: DiffObject.Arguments): Promise<DiffObject.Result> =>
+  diffObject = async (args: Diff.Arguments): Promise<Diff.Result> =>
     await this.call('ak.wwise.core.object.diff', args);
 
   setObject = async (args: Set.Arguments): Promise<Set.Result> =>
