@@ -18,6 +18,8 @@ const wwiseInfo = await client.call.core.getInfo();
 
 ## TODO: API Design...
 
+### Plan A
+
 ```ts
 client.getObjects(waql, opts);
 client.getSelectedObjects(opts);
@@ -41,4 +43,7 @@ client.setRandomizer(args);
 client.setAttenuationCurve(args);
 
 client.pasteProperties(args);
+...
 ```
+
+### Plan B

@@ -1,27 +1,106 @@
 import { Session, Connection } from 'autobahn';
-import { ObjectClient } from './clients/object';
 import { Import } from './types/audio';
-import { Copy, Create, Diff, Get, Set, SetRandomizer } from './types/object';
+import {
+  Copy,
+  Create,
+  Delete,
+  Diff,
+  Get,
+  GetAttenuationCurve,
+  GetPropertyAndReferenceNames,
+  IsPropertyEnabled,
+  Move,
+  PasteProperties,
+  Set,
+  SetAttenuationCurve,
+  SetName,
+  SetNotes,
+  SetProperty,
+  SetRandomizer,
+  SetReference,
+} from './types/object';
 import { Create as CreateTrans, ExecuteAction } from './types/transport';
 
-export class Client {
+export function connect(host: string): Promise<Client> {
+  return new Promise((resolve, reject) => {
+    var connection = new Connection({
+      url: host,
+      realm: 'realm1',
+      protocols: ['wamp.2.json'],
+    });
+
+    connection.onclose = (reason, details) => {
+      reject(new Error(`Session closed: ${reason} ${details}`));
+      return true;
+    };
+
+    connection.onopen = (session) => resolve(new Client(session, connection));
+
+    connection.open();
+  });
+}
+
+interface Object {
+  call(uri: 'ak.wwise.core.object.copy', args: Copy.Arguments): Promise<Copy.Result>;
+  call(uri: 'ak.wwise.core.object.create', args: Create.Arguments): Promise<Create.Result>;
+  call(uri: 'ak.wwise.core.object.delete', args: Delete.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.diff', args: Diff.Arguments): Promise<Diff.Result>;
+  call(uri: 'ak.wwise.core.object.get', args: Get.Arguments, opts: Get.Options): Promise<Get.Result>;
+  call(uri: 'ak.wwise.core.object.getAttenuationCurve', args: GetAttenuationCurve.Arguments): Promise<GetAttenuationCurve.Result>;
+  call(uri: 'ak.wwise.core.object.getPropertyAndReferenceNames', args: GetPropertyAndReferenceNames.Arguments): Promise<GetPropertyAndReferenceNames.Result>;
+  call(uri: 'ak.wwise.core.object.getPropertyInfo', args: Get.Arguments): Promise<Copy.Result>;
+  call(uri: 'ak.wwise.core.object.getPropertyNames', args: Get.Arguments): Promise<Copy.Result>;
+  call(uri: 'ak.wwise.core.object.getTypes', args: Copy.Arguments): Promise<Copy.Result>;
+  call(uri: 'ak.wwise.core.object.isPropertyEnabled', args: IsPropertyEnabled.Arguments): Promise<IsPropertyEnabled.Result>;
+  call(uri: 'ak.wwise.core.object.move', args: Move.Arguments): Promise<Move.Result>;
+  call(uri: 'ak.wwise.core.object.pasteProperties', args: PasteProperties.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.set', args: Set.Arguments): Promise<Set.Result>;
+  call(uri: 'ak.wwise.core.object.setAttenuationCurve', args: SetAttenuationCurve.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.setName', args: SetName.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.setNotes', args: SetNotes.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.setProperty', args: SetProperty.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.setRandomizer', args: SetRandomizer.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.setReference', args: SetReference.Arguments): Promise<void>;
+  call(uri: string, args?: any, opts?: any): Promise<any>;
+}
+
+interface Ui {}
+
+class Client implements Object, Ui {
   session: Session;
   connection: Connection;
-
-  object: ObjectClient;
 
   constructor(session: Session, connection: Connection) {
     this.session = session;
     this.connection = connection;
-    this.object = new ObjectClient(session);
   }
 
-  /** call a function using wamp RPC */
-  call(uri: string, args?: any, options?: any): Promise<any> {
+  call(uri: 'ak.wwise.core.object.copy', args: Copy.Arguments): Promise<Copy.Result>;
+  call(uri: 'ak.wwise.core.object.create', args: Create.Arguments): Promise<Create.Result>;
+  call(uri: 'ak.wwise.core.object.delete', args: Delete.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.diff', args: Diff.Arguments): Promise<Diff.Result>;
+  call(uri: 'ak.wwise.core.object.get', args: Get.Arguments, opts: Get.Options): Promise<Get.Result>;
+  call(uri: 'ak.wwise.core.object.getAttenuationCurve', args: GetAttenuationCurve.Arguments): Promise<GetAttenuationCurve.Result>;
+  call(uri: 'ak.wwise.core.object.getPropertyAndReferenceNames', args: GetPropertyAndReferenceNames.Arguments): Promise<GetPropertyAndReferenceNames.Result>;
+  call(uri: 'ak.wwise.core.object.getPropertyInfo', args: Get.Arguments): Promise<Copy.Result>;
+  call(uri: 'ak.wwise.core.object.getPropertyNames', args: Get.Arguments): Promise<Copy.Result>;
+  call(uri: 'ak.wwise.core.object.getTypes', args: Copy.Arguments): Promise<Copy.Result>;
+  call(uri: 'ak.wwise.core.object.isPropertyEnabled', args: IsPropertyEnabled.Arguments): Promise<IsPropertyEnabled.Result>;
+  call(uri: 'ak.wwise.core.object.move', args: Move.Arguments): Promise<Move.Result>;
+  call(uri: 'ak.wwise.core.object.pasteProperties', args: PasteProperties.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.set', args: Set.Arguments): Promise<Set.Result>;
+  call(uri: 'ak.wwise.core.object.setAttenuationCurve', args: SetAttenuationCurve.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.setName', args: SetName.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.setNotes', args: SetNotes.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.setProperty', args: SetProperty.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.setRandomizer', args: SetRandomizer.Arguments): Promise<void>;
+  call(uri: 'ak.wwise.core.object.setReference', args: SetReference.Arguments): Promise<void>;
+
+  call(uri: string, args?: any, opts?: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.session.call(uri, [], args, options).then(
+      this.session.call(uri, [], args, opts).then(
         (res) => resolve(res ? (<any>res).kwargs : null),
-        (err) => reject(err)
+        (error) => reject(error)
       );
     });
   }
@@ -36,54 +115,4 @@ export class Client {
       }
     });
   }
-}
-
-export function connect(host: string): Promise<WaapiClient> {
-  return new Promise((resolve, reject) => {
-    var connection = new Connection({
-      url: host,
-      realm: 'realm1',
-      protocols: ['wamp.2.json'],
-    });
-
-    connection.onclose = (reason, details) => {
-      reject(new Error(`Session closed: ${reason} ${details}`));
-      return true;
-    };
-
-    connection.onopen = (session) =>
-      resolve(new WaapiClient(session, connection));
-    connection.open();
-  });
-}
-
-export class WaapiClient extends Client {
-  getObjects = async (
-    args: Get.Arguments,
-    opts: Get.Options
-  ): Promise<Get.Result> =>
-    await this.call('ak.wwise.core.object.get', args, opts);
-
-  copyObject = async (args: Copy.Arguments): Promise<Copy.Result> =>
-    await this.call('ak.wwise.core.object.copy', args);
-
-  diffObject = async (args: Diff.Arguments): Promise<Diff.Result> =>
-    await this.call('ak.wwise.core.object.diff', args);
-
-  setObject = async (args: Set.Arguments): Promise<Set.Result> =>
-    await this.call('ak.wwise.core.object.set', args);
-
-  setRandomizer = async (args: SetRandomizer.Arguments): Promise<void> =>
-    await this.call('ak.wwise.core.object.setRandomizer', args);
-
-  import = async (args: Import.Arguments): Promise<Import.Result> =>
-    await this.call('ak.wwise.core.audio.import', args);
-
-  exec = async (args: ExecuteAction.Arguments) =>
-    await this.call('ak.wwise.core.transport.executeAction', args);
-  createTransport = async (args: CreateTrans.Arguments) =>
-    await this.call('ak.wwise.core.transport.create', args);
-
-  createObject = async (args: Create.Arguments) =>
-    await this.call('ak.wwise.core.object.create', args);
 }

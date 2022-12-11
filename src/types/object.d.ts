@@ -328,17 +328,7 @@ export namespace Get {
         /** Y coordinate of curve point. */
         y: number;
         /** Shape of the curve segment between this point and the next. */
-        shape:
-          | 'Constant'
-          | 'Linear'
-          | 'Log3'
-          | 'Log2'
-          | 'Log1'
-          | 'InvertedSCurve'
-          | 'SCurve'
-          | 'Exp1'
-          | 'Exp2'
-          | 'Exp3';
+        shape: 'Constant' | 'Linear' | 'Log3' | 'Log2' | 'Log1' | 'InvertedSCurve' | 'SCurve' | 'Exp1' | 'Exp2' | 'Exp3';
       }[];
       /** Specifies dot-separated accessors that form a query and yields a property value or an object reference. A single @ specifies the value of the property for the associated object. A double @ specifies the value of the property for the source of override. */
       [property: `@${string}`]: null | string | number | boolean;
@@ -353,26 +343,12 @@ export namespace GetAttenuationCurve {
     /** The ID (GUID) or unique name of the platform to get curves.  Set to null-guid for unlinked reference. */
     platform?: string;
     /** Type of attenuation curve. */
-    curveType:
-      | 'VolumeDryUsage'
-      | 'VolumeWetGameUsage'
-      | 'VolumeWetUserUsage'
-      | 'LowPassFilterUsage'
-      | 'HighPassFilterUsage'
-      | 'SpreadUsage'
-      | 'FocusUsage';
+    curveType: 'VolumeDryUsage' | 'VolumeWetGameUsage' | 'VolumeWetUserUsage' | 'LowPassFilterUsage' | 'HighPassFilterUsage' | 'SpreadUsage' | 'FocusUsage';
   }
 
   export interface Result {
     /** Name of attenuation curve. */
-    curveType:
-      | 'VolumeDryUsage'
-      | 'VolumeWetGameUsage'
-      | 'VolumeWetUserUsage'
-      | 'LowPassFilterUsage'
-      | 'HighPassFilterUsage'
-      | 'SpreadUsage'
-      | 'FocusUsage';
+    curveType: 'VolumeDryUsage' | 'VolumeWetGameUsage' | 'VolumeWetUserUsage' | 'LowPassFilterUsage' | 'HighPassFilterUsage' | 'SpreadUsage' | 'FocusUsage';
     /** Defines whether the curve has no points, has its own set of points, or uses those of the VolumeDryUsage curve. */
     use: 'None' | 'Custom' | 'UseVolumeDry';
     /** The attenuation curve. An array of points defining a curve. */
@@ -382,17 +358,7 @@ export namespace GetAttenuationCurve {
       /** Y coordinate of curve point. */
       y: number;
       /** Shape of the curve segment between this point and the next. */
-      shape:
-        | 'Constant'
-        | 'Linear'
-        | 'Log3'
-        | 'Log2'
-        | 'Log1'
-        | 'InvertedSCurve'
-        | 'SCurve'
-        | 'Exp1'
-        | 'Exp2'
-        | 'Exp3';
+      shape: 'Constant' | 'Linear' | 'Log3' | 'Log2' | 'Log1' | 'InvertedSCurve' | 'SCurve' | 'Exp1' | 'Exp2' | 'Exp3';
     }[];
   }
 }
@@ -521,14 +487,7 @@ export namespace SetAttenuationCurve {
     /** The ID (GUID) or unique name of the platform to set curves. Set to null-guid for unlinked curve. */
     platform?: string;
     /** The type of attenuation curve. */
-    curveType:
-      | 'VolumeDryUsage'
-      | 'VolumeWetGameUsage'
-      | 'VolumeWetUserUsage'
-      | 'LowPassFilterUsage'
-      | 'HighPassFilterUsage'
-      | 'SpreadUsage'
-      | 'FocusUsage';
+    curveType: 'VolumeDryUsage' | 'VolumeWetGameUsage' | 'VolumeWetUserUsage' | 'LowPassFilterUsage' | 'HighPassFilterUsage' | 'SpreadUsage' | 'FocusUsage';
     /** Defines if the curve has no points, has its own set of points, or uses those of the VolumeDryUsage curve. */
     use: 'None' | 'Custom' | 'UseVolumeDry';
     /** The attenuation curve. An array of points defining a curve. */
@@ -538,17 +497,7 @@ export namespace SetAttenuationCurve {
       /** Y coordinate of curve point. */
       y: number;
       /** Shape of the curve segment between this point and the next. */
-      shape:
-        | 'Constant'
-        | 'Linear'
-        | 'Log3'
-        | 'Log2'
-        | 'Log1'
-        | 'InvertedSCurve'
-        | 'SCurve'
-        | 'Exp1'
-        | 'Exp2'
-        | 'Exp3';
+      shape: 'Constant' | 'Linear' | 'Log3' | 'Log2' | 'Log1' | 'InvertedSCurve' | 'SCurve' | 'Exp1' | 'Exp2' | 'Exp3';
     }[];
   }
 }
