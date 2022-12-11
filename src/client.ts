@@ -1,4 +1,5 @@
 import { Session, Connection } from 'autobahn';
+import { ObjectClient } from './clients/object';
 import { Import } from './types/audio';
 import { Copy, Create, Diff, Get, Set, SetRandomizer } from './types/object';
 import { Create as CreateTrans, ExecuteAction } from './types/transport';
@@ -7,9 +8,12 @@ export class Client {
   session: Session;
   connection: Connection;
 
+  object: ObjectClient;
+
   constructor(session: Session, connection: Connection) {
     this.session = session;
     this.connection = connection;
+    this.object = new ObjectClient(session);
   }
 
   /** call a function using wamp RPC */
