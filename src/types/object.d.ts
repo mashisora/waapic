@@ -1,17 +1,19 @@
+// REVIEWED
+
 export namespace Copy {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be copied. */
     object: string;
-    /** The ID (GUID), name, or path of the object's new parent. */
+    /** The ID (GUID), name, or path of the new object's parent. */
     parent: string;
     /** The action to take if 'parent' already has a child with the same name. */
     onNameConflict?: 'rename' | 'replace' | 'fail';
   }
 
   export interface Result {
-    /** The ID (GUID) of the copied object. */
+    /** The ID (GUID) of the new object. */
     id: string;
-    /** The name of the copied object. */
+    /** The name of the new object. */
     name: string;
   }
 }
@@ -20,16 +22,16 @@ export namespace Move {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be moved. */
     object: string;
-    /** The ID (GUID), name, or path of the object's new parent. */
+    /** The ID (GUID), name, or path of the new object's parent. */
     parent: string;
     /** The action to take if 'parent' already has a child with the same name. */
     onNameConflict?: 'rename' | 'replace' | 'fail';
   }
 
   export interface Result {
-    /** The ID (GUID) of the moved object. */
+    /** The ID (GUID) of the new object. */
     id: string;
-    /** The name of the moved object. */
+    /** The name of the new object. */
     name: string;
   }
 }
@@ -77,8 +79,17 @@ export namespace Create {
     /** The name of the newly created Object. */
     name: string;
     /** The children of objects created. */
-    children?: Result[];
+    children?: ChildrenR;
   }
+
+  type ChildrenR = {
+    /** The ID (GUID) of the newly created Object. */
+    id: string;
+    /** The name of the newly created Object. */
+    name: string;
+    /** The children of objects created. */
+    children?: ChildrenR;
+  }[];
 }
 
 export namespace Delete {
@@ -170,7 +181,7 @@ export namespace Get {
       | 'points'
       | `@${string}`
     )[];
-    /** The ID (GUID) or name of the platform. This is an optional argument. When not specified, the current platform is used. */
+    /** The ID (GUID) or name of the platform. When not specified, the current platform is used. */
     platform?: string;
     /** The ID (GUID) or name of the language. */
     language?: string;
@@ -447,10 +458,10 @@ export namespace Set {
       name?: string;
       /** The new notes or comments of 'object'. */
       notes?: string;
-      /** An array of child objects to be created. */
-      children?: Children;
       /** Sets the value of property @propertyName. */
       [property: `@${string}`]: null | string | number | boolean;
+      /** An array of child objects to be created. */
+      children?: Children;
     }[];
     /** Unless overriden by an individual 'object', the ID (GUID) or unique name of the platform used when setting properties and references via this operation. Not specifying a platform sets the value for all linked platforms. */
     platform?: string;
@@ -475,10 +486,10 @@ export namespace Set {
     classId?: number;
     /** The ID (GUID) or name of the language. Only use this argument when creating Sound Voice objects. */
     language?: string;
-    /** An array of child objects to be created (Recursive). */
-    children?: Children;
     /** Sets the value of property @propertyName. */
     [property: `@${string}`]: null | string | number | boolean;
+    /** An array of child objects to be created (Recursive). */
+    children?: Children;
   }[];
 
   export interface Result {

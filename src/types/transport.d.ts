@@ -9,21 +9,21 @@ export namespace Create {
   }
 
   export interface Result {
-    /** Transport object ID to be used with all other ak.wwise.core.transport functions. Unsigned Integer 32-bit. */
+    /** Transport object ID to be used with all other ak.wwise.core.transport functions. */
     transport: number;
   }
 }
 
 export namespace Destroy {
   export interface Arguments {
-    /** The transport object ID to be used with all other ak.wwise.core.transport functions. Unsigned Integer 32-bit. */
+    /** The transport object ID to be used with all other ak.wwise.core.transport functions. */
     transport: number;
   }
 }
 
 export namespace ExecuteAction {
   export interface Arguments {
-    /** The transport object ID to be used with all other ak.wwise.core.transport functions. Unsigned Integer 32-bit. */
+    /** The transport object ID to be used with all other ak.wwise.core.transport functions. */
     transport?: number;
     /** The action to execute. */
     action: 'play' | 'stop' | 'pause' | 'playStop' | 'playDirectly';
@@ -38,7 +38,7 @@ export namespace GetList {
       object: string;
       /** The game object used by the transport object. A game object ID, unsigned integer 64-bit. */
       gameObject?: number;
-      /** Transport object ID. Unsigned Integer 32-bit. */
+      /** Transport object ID. */
       transport: number;
     }[];
   }
@@ -46,7 +46,7 @@ export namespace GetList {
 
 export namespace GetState {
   export interface Arguments {
-    /** The transport object ID to be used with all other ak.wwise.core.transport functions. Unsigned Integer 32-bit. */
+    /** The transport object ID to be used with all other ak.wwise.core.transport functions. */
     transport: number;
   }
 
