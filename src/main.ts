@@ -9,10 +9,5 @@ try {
 } catch (err) {
   console.log(err);
 }
-import { Create } from './types/object';
-const a = {} as Create.Arguments;
-
-let b = a['@123'];
-b = '1';
 
 await client.disconnect();

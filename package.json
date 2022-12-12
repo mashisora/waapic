@@ -9,8 +9,7 @@
   "author": "mashisora <mashisora@outlook.com>",
   "license": "MIT",
   "prettier": {
-    "singleQuote": true,
-    "printWidth": 200
+    "singleQuote": true
   },
   "dependencies": {
     "autobahn": "^22.11.1"

@@ -1,3 +1,16 @@
+export interface ICallCore {
+  'ak.wwise.core.getInfo': {
+    args: {};
+    opts: {};
+    result: GetInfo.Result;
+  };
+  'ak.wwise.core.getProjectInfo': {
+    args: {};
+    opts: {};
+    result: GetProjectInfo.Result;
+  };
+}
+
 export namespace GetInfo {
   export interface Result {
     /** Wwise session id. */

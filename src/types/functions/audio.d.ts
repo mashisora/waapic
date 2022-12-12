@@ -1,5 +1,28 @@
 // REVIEWED
 
+export interface ICallAudio {
+  'ak.wwise.core.audio.import': {
+    args: Import.Arguments;
+    opts: {};
+    result: Import.Result;
+  };
+  'ak.wwise.core.audio.importTabDelimited': {
+    args: ImportTabDelimited.Arguments;
+    opts: {};
+    result: ImportTabDelimited.Result;
+  };
+  'ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInRegion': {
+    args: GetMinMaxPeaksInRegion.Arguments;
+    opts: {};
+    result: GetMinMaxPeaksInRegion.Result;
+  };
+  'ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInTrimmedRegion': {
+    args: GetMinMaxPeaksInTrimmedRegion.Arguments;
+    opts: {};
+    result: GetMinMaxPeaksInTrimmedRegion.Result;
+  };
+}
+
 export namespace Import {
   export interface Arguments {
     /** Determines how import object creation is performed. */

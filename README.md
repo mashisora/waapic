@@ -25,29 +25,11 @@ Cause TypeScript's [issue](https://github.com/microsoft/TypeScript/issues/26892)
 ### Plan A
 
 ```ts
-client.getObjects(waql, opts);
-client.getSelectedObjects(opts);
-
-client.setObjects(args);
-client.copyObject(args);
-client.moveObject(args);
-client.diffObject(args);
-client.createObject(args);
-client.deleteObject(args);
-
-client.getAttenuationCurve(args);
-client.getPropertyAndReferenceNames(args);
-client.isPropertyEnabled(args);
-
-client.setName(args);
-client.setNotes(args);
-client.setProperty(args);
-client.setReference(args);
-client.setRandomizer(args);
-client.setAttenuationCurve(args);
-
-client.pasteProperties(args);
-...
+const result = client.call('ak.wwise.core.object.copy', { object: '', parent: '' });
 ```
 
 ### Plan B
+
+```ts
+const result = client.call({ uri: 'ak.wwise.core.object.copy', args: { object: '', parent: '' }, opts: {} });
+```
