@@ -1,6 +1,6 @@
 // REVIEWED
 
-export interface ICallAudio {
+export interface IAudioFunctions {
   'ak.wwise.core.audio.import': {
     args: Import.Arguments;
     opts: {};

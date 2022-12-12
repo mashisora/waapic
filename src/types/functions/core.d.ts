@@ -1,4 +1,4 @@
-export interface ICallCore {
+export interface ICoreFunctions {
   'ak.wwise.core.getInfo': {
     args: {};
     opts: {};
