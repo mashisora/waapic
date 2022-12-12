@@ -16,8 +16,3 @@ let b = a['@123'];
 b = '1';
 
 await client.disconnect();
-
-// writeFileSync('./outts.ts', await compileFromFile('./create.json'));
-
-// import { Copy } from './types/core/object';
-// const a: Copy;

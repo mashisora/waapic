@@ -16,6 +16,10 @@ const client = await waapi.connect('ws://127.0.0.1:8080/waapi');
 const wwiseInfo = await client.call.core.getInfo();
 ```
 
+## Notes
+
+Cause TypeScript's [issue](https://github.com/microsoft/TypeScript/issues/26892), APIs like `client.call('ak.wwise.core.object.copy', args): result` may cannot be implement with correct IDE autocompletion.
+
 ## TODO: API Design...
 
 ### Plan A
