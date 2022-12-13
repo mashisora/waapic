@@ -1,24 +1,21 @@
 {
   "name": "waapic",
   "version": "0.1.0",
-  "main": "./dist/index.ts",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
   "author": "mashisora <mashisora@outlook.com>",
   "license": "MIT",
   "description": "A Wwise Authoring API Client Library in TypeScript.",
+  "repository": "https://github.com/mashisora/waapic",
   "keywords": [
     "waapi",
     "wwise",
     "typescript",
     "nodejs"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mashisora/waapic.git"
-  },
+  "main": "./dist/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "tsc"
   },
