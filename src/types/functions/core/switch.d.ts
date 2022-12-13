@@ -1,4 +1,20 @@
-// REVIEWED
+export interface ISwitchFunctions {
+  'ak.wwise.core.switchContainer.addAssignment': {
+    args: AddAssignment.Arguments;
+    opts: never;
+    result: void;
+  };
+  'ak.wwise.core.switchContainer.getAssignments': {
+    args: GetAssignments.Arguments;
+    opts: never;
+    result: GetAssignments.Result;
+  };
+  'ak.wwise.core.switchContainer.removeAssignment': {
+    args: RemoveAssignment.Arguments;
+    opts: never;
+    result: void;
+  };
+}
 
 export namespace AddAssignment {
   export interface Arguments {

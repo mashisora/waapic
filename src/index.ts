@@ -1,7 +1,5 @@
 import { Session, Connection } from 'autobahn';
-import { IAudioFunctions } from './types/functions/audio';
-import { ICoreFunctions } from './types/functions/core';
-import { IObjectFunctions } from './types/functions/object';
+import { IFunctions } from './types/functions';
 
 export function connect(host: string): Promise<Client> {
   return new Promise((resolve, reject) => {
@@ -22,12 +20,7 @@ export function connect(host: string): Promise<Client> {
   });
 }
 
-interface IFunctions
-  extends IAudioFunctions,
-    ICoreFunctions,
-    IObjectFunctions {}
-
-class Client {
+export class Client {
   session: Session;
   connection: Connection;
 
@@ -36,11 +29,11 @@ class Client {
     this.connection = connection;
   }
 
-  call<U extends keyof IFunctions, F extends IFunctions[U]>(
-    uri: U,
-    args: F['args'],
-    opts?: F['opts']
-  ): Promise<F['result']> {
+  call<K extends keyof IFunctions>(
+    uri: K,
+    args: IFunctions[K]['args'],
+    opts?: IFunctions[K]['opts']
+  ): Promise<IFunctions[K]['result']> {
     return new Promise((resolve, reject) => {
       this.session.call(uri, [], args, <any>opts).then(
         (res) => resolve(res ? (<any>res).kwargs : null),

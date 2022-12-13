@@ -1,4 +1,35 @@
-// REVIEWED
+export interface ITransportFunctions {
+  'ak.wwise.core.transport.create': {
+    args: Create.Arguments;
+    opts: never;
+    result: Create.Result;
+  };
+  'ak.wwise.core.transport.destroy': {
+    args: Destroy.Arguments;
+    opts: never;
+    result: void;
+  };
+  'ak.wwise.core.transport.executeAction': {
+    args: ExecuteAction.Arguments;
+    opts: never;
+    result: void;
+  };
+  'ak.wwise.core.transport.getList': {
+    args: {};
+    opts: never;
+    result: GetList.Result;
+  };
+  'ak.wwise.core.transport.getState': {
+    args: GetState.Arguments;
+    opts: never;
+    result: GetState.Result;
+  };
+  'ak.wwise.core.transport.prepare': {
+    args: Prepare.Arguments;
+    opts: never;
+    result: void;
+  };
+}
 
 export namespace Create {
   export interface Arguments {

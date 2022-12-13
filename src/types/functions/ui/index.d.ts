@@ -1,3 +1,18 @@
+import { Get } from '../core/object';
+
+export interface IUiFunctions {
+  'ak.wwise.ui.captureScreen': {
+    args: CaptureScreen.Arguments;
+    opts: never;
+    result: CaptureScreen.Result;
+  };
+  'ak.wwise.ui.getSelectedObjects': {
+    args: {};
+    opts: Get.opts;
+    result: Get.Result;
+  };
+}
+
 export namespace CaptureScreen {
   export interface Arguments {
     /** The name of the view as displayed in Wwise UI. By default, the whole UI is captured. */

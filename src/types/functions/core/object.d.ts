@@ -1,5 +1,3 @@
-// REVIEWED
-
 export interface IObjectFunctions {
   'ak.wwise.core.object.copy': {
     args: Copy.Arguments;
@@ -8,87 +6,92 @@ export interface IObjectFunctions {
   };
   'ak.wwise.core.object.create': {
     args: Create.Arguments;
-    opts: {};
+    opts: never;
     result: Create.Result;
+  };
+  'ak.wwise.core.object.delete': {
+    args: Delete.Arguments;
+    opts: never;
+    result: void;
   };
   'ak.wwise.core.object.diff': {
     args: Diff.Arguments;
-    opts: {};
+    opts: never;
     result: Diff.Result;
   };
   'ak.wwise.core.object.get': {
     args: Get.Arguments;
-    opts: {};
+    opts: Get.opts;
     result: Get.Result;
-  };
-  'ak.wwise.core.object.getPropertyAndReferenceNames': {
-    args: GetPropertyAndReferenceNames.Arguments;
-    opts: {};
-    result: GetPropertyAndReferenceNames.Result;
   };
   'ak.wwise.core.object.getAttenuationCurve': {
     args: GetAttenuationCurve.Arguments;
-    opts: {};
+    opts: never;
     result: GetAttenuationCurve.Result;
   };
+  'ak.wwise.core.object.getPropertyAndReferenceNames': {
+    args: GetPropertyAndReferenceNames.Arguments;
+    opts: never;
+    result: GetPropertyAndReferenceNames.Result;
+  };
   'ak.wwise.core.object.getPropertyInfo': {
-    args: {};
-    opts: {};
-    result: {};
+    args: GetPropertyInfo.Arguments;
+    opts: never;
+    result: GetPropertyInfo.Result;
   };
   'ak.wwise.core.object.getTypes': {
     args: {};
-    opts: {};
-    result: {};
+    opts: never;
+    result: GetTypes.Result;
   };
   'ak.wwise.core.object.isPropertyEnabled': {
     args: IsPropertyEnabled.Arguments;
-    opts: {};
+    opts: never;
     result: IsPropertyEnabled.Result;
   };
   'ak.wwise.core.object.move': {
     args: Move.Arguments;
-    opts: {};
+    opts: never;
     result: Move.Result;
   };
   'ak.wwise.core.object.pasteProperties': {
     args: PasteProperties.Arguments;
-    opts: {};
+    opts: never;
     result: void;
   };
   'ak.wwise.core.object.set': {
     args: Set.Arguments;
-    opts: {};
+    opts: never;
     result: Set.Result;
   };
   'ak.wwise.core.object.setAttenuationCurve': {
     args: SetAttenuationCurve.Arguments;
-    opts: {};
+    opts: never;
     result: void;
   };
   'ak.wwise.core.object.setName': {
     args: GetAttenuationCurve.Arguments;
-    opts: {};
+    opts: never;
     result: GetAttenuationCurve.Result;
   };
   'ak.wwise.core.object.setNotes': {
     args: GetAttenuationCurve.Arguments;
-    opts: {};
+    opts: never;
     result: GetAttenuationCurve.Result;
   };
   'ak.wwise.core.object.setProperty': {
     args: GetAttenuationCurve.Arguments;
-    opts: {};
+    opts: never;
     result: GetAttenuationCurve.Result;
   };
   'ak.wwise.core.object.setRandomizer': {
     args: GetAttenuationCurve.Arguments;
-    opts: {};
+    opts: never;
     result: GetAttenuationCurve.Result;
   };
   'ak.wwise.core.object.setReference': {
     args: GetAttenuationCurve.Arguments;
-    opts: {};
+    opts: never;
     result: GetAttenuationCurve.Result;
   };
 }
@@ -96,24 +99,6 @@ export interface IObjectFunctions {
 export namespace Copy {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be copied. */
-    object: string;
-    /** The ID (GUID), name, or path of the new object's parent. */
-    parent: string;
-    /** The action to take if 'parent' already has a child with the same name. */
-    onNameConflict?: 'rename' | 'replace' | 'fail';
-  }
-
-  export interface Result {
-    /** The ID (GUID) of the new object. */
-    id: string;
-    /** The name of the new object. */
-    name: string;
-  }
-}
-
-export namespace Move {
-  export interface Arguments {
-    /** The ID (GUID), name, or path of the object to be moved. */
     object: string;
     /** The ID (GUID), name, or path of the new object's parent. */
     parent: string;
@@ -214,7 +199,7 @@ export namespace Get {
     waql?: string;
   }
 
-  export interface Options {
+  export interface opts {
     /** Specifies what is being returned for every object. This can include built-in accessors, such as the name or id, or object properties, such as the Volume or the Pitch. */
     return?: (
       | 'id'
@@ -354,7 +339,7 @@ export namespace Get {
         /** The name of the object. */
         name?: string;
       };
-      /** Absolute path to the converted file. Specify the platform in the options. Only valid for Sound and Audio Source objects. */
+      /** Absolute path to the converted file. Specify the platform in the opts. Only valid for Sound and Audio Source objects. */
       convertedFilePath?: string;
       /** Absolute path to the generated SoundBank file associated with the SoundBank object. Only valid for SoundBank objects. */
       soundbankBnkFilePath?: string;
@@ -504,6 +489,156 @@ export namespace GetPropertyAndReferenceNames {
   }
 }
 
+export namespace GetPropertyInfo {
+  export interface Arguments {
+    /** The ID (GUID), name, or path of the object to watch. */
+    object?: string;
+    /** The ID (class ID) of the object to retrieve the property from. */
+    classId?: number;
+    /** The name of the property to retrieve. */
+    property?: string;
+  }
+  export interface Result {
+    /** The name of the property. */
+    name?: string;
+    /** The type of the property. */
+    type?: string;
+    /** The ID (audio engine ID) of the property. */
+    audioEngineId?: number;
+    /** The default value of the property. */
+    default?: null | string | number | boolean;
+    /** The features supported by the property. */
+    supports?: {
+      /** The RTPC mode that is supported by the property. */
+      rtpc?: 'None' | 'Additive' | 'Exclusive' | 'Multiplicative';
+      /** Indicates if the randomizer is supported by the property. */
+      randomizer?: boolean;
+      /** Indicates if unlink is supported by the property. */
+      unlink?: boolean;
+    };
+    /** Displays information related to the property. */
+    display?: {
+      /** The display name of the property. */
+      name?: string;
+      /** The display group of the property. */
+      group?: string;
+      /** The display index of the property. */
+      index?: number;
+    };
+    /** List of dependencies on other properties with their related action and conditions. */
+    dependencies?: {
+      /** Defines the type of dependency. */
+      type: 'override' | 'property' | 'reference' | 'objectType';
+      /** The name of the property to which the dependency is applied. */
+      property?: string;
+      /** The name of the action that is performed when the conditions are met. */
+      action: string;
+      /** The name of the context in which the dependency is evaluated. */
+      context: string;
+      /** An array of conditions related to the dependency. */
+      conditions?: (
+        | {
+            [k: string]: unknown;
+          }
+        | {
+            [k: string]: unknown;
+          }
+      )[];
+    }[];
+    /** Restricts the value of the property. */
+    restriction?:
+      | {}
+      | {
+          /** The value restriction of the property. */
+          type: 'range';
+          /** The minimum value for the property. */
+          min: number;
+          /** The maximum value for the property. */
+          max: number;
+        }
+      | {
+          /** The object reference restrictions of the property. */
+          type: 'reference';
+          /** The list of object reference restrictions. */
+          restrictions: (
+            | {
+                /** An array of possible types. */
+                type: string[];
+                /** An array of types that are only supported as Shared objects (i.e., not Custom) even if the reference can support Custom objects. This is always a subset of "type". */
+                sharedOnlyTypes?: string[];
+              }
+            | {
+                /** An array of supported categories. */
+                category: string[];
+              }
+            | {
+                /** Name of the reference. */
+                childOfReference: string;
+              }
+            | ('notNull' | 'playable')
+          )[];
+        }
+      | {
+          /** The value restriction of the property. */
+          type: 'enum';
+          /** Array of the possible enumerated values the property is restricted to. */
+          values: {
+            /** The enumerated value.
+             */
+            value?: number | boolean;
+            /** The name associated with the value.
+             */
+            displayName?: string;
+          }[];
+        };
+    /** Information related to how the property is displayed. */
+    ui?: {
+      /** Specifies how the property value is handled by Wwise UI. */
+      value?: {
+        /** The number of decimals displayed for the value. */
+        decimals?: number;
+        /** The amount by which the display increments the value. */
+        step?: number;
+        /** The amount by which the display increments the value for fine adjustment. */
+        fine?: number;
+        /** The minimum display value. */
+        min?: number;
+        /** The maximum display value. */
+        max?: number;
+        /** The number used to represent infinity. */
+        infinity?: number;
+      };
+      /** Describe how the property is displayed. */
+      displayAs?: {
+        /** Indicates if the property should be displayed as a left-right mix. */
+        lrMix?: boolean;
+        /** Indicates if the property should be displayed as a music note (MIDI). */
+        musicNote?: boolean;
+        /** Indicates if the property should be displayed as a bitfield. */
+        bitfield?: boolean;
+      };
+      /** The unit type of the property. */
+      dataMeaning?: 'None' | 'Frequency' | 'Decibels' | 'PitchCents';
+      /** Indicates if the value of the property is updated while moving the slider. */
+      autoUpdate?: boolean;
+    };
+  }
+}
+
+export namespace GetTypes {
+  export interface Result {
+    /** An array of all Wwise object types. */
+    return: {
+      /** The ID (class ID) of the object. */
+      classId: number;
+      /** The name of the object. */
+      name: string;
+      /** The type of the object. */
+      type: string;
+    }[];
+  }
+}
+
 export namespace IsPropertyEnabled {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to check. */
@@ -517,6 +652,24 @@ export namespace IsPropertyEnabled {
   export interface Result {
     /** Indicates if the property is enabled. */
     return?: boolean;
+  }
+}
+
+export namespace Move {
+  export interface Arguments {
+    /** The ID (GUID), name, or path of the object to be moved. */
+    object: string;
+    /** The ID (GUID), name, or path of the new object's parent. */
+    parent: string;
+    /** The action to take if 'parent' already has a child with the same name. */
+    onNameConflict?: 'rename' | 'replace' | 'fail';
+  }
+
+  export interface Result {
+    /** The ID (GUID) of the new object. */
+    id: string;
+    /** The name of the new object. */
+    name: string;
   }
 }
 

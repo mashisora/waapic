@@ -1,12 +1,23 @@
-export interface ICoreFunctions {
+import { IAudioFunctions } from './audio';
+import { IObjectFunctions } from './object';
+import { ISoundbankFunctions } from './soundbank';
+import { ISwitchFunctions } from './switch';
+import { ITransportFunctions } from './transport';
+
+export interface ICoreFunctions
+  extends IObjectFunctions,
+    IAudioFunctions,
+    ISoundbankFunctions,
+    ISwitchFunctions,
+    ITransportFunctions {
   'ak.wwise.core.getInfo': {
     args: {};
-    opts: {};
+    opts: never;
     result: GetInfo.Result;
   };
   'ak.wwise.core.getProjectInfo': {
     args: {};
-    opts: {};
+    opts: never;
     result: GetProjectInfo.Result;
   };
 }

@@ -1,4 +1,30 @@
-// REVIEWED
+export interface ISoundbankFunctions {
+  'ak.wwise.core.soundbank.convertExternalSources': {
+    args: ConvertExternalSources.Arguments;
+    opts: never;
+    result: void;
+  };
+  'ak.wwise.core.soundbank.generate': {
+    args: Generate.Arguments;
+    opts: never;
+    result: void;
+  };
+  'ak.wwise.core.soundbank.getInclusions': {
+    args: GetInclusions.Arguments;
+    opts: never;
+    result: GetInclusions.Result;
+  };
+  'ak.wwise.core.soundbank.processDefinitionFiles': {
+    args: ProcessDefinitionFiles.Arguments;
+    opts: never;
+    result: void;
+  };
+  'ak.wwise.core.soundbank.setInclusions': {
+    args: SetInclusions.Arguments;
+    opts: never;
+    result: void;
+  };
+}
 
 export namespace ConvertExternalSources {
   export interface Arguments {

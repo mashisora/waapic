@@ -25,11 +25,18 @@ Cause TypeScript's [issue](https://github.com/microsoft/TypeScript/issues/26892)
 ### Plan A
 
 ```ts
-const result = client.call('ak.wwise.core.object.copy', { object: '', parent: '' });
+const result = client.call('ak.wwise.core.object.copy', {
+  object: '',
+  parent: '',
+});
 ```
 
 ### Plan B
 
 ```ts
-const result = client.call({ uri: 'ak.wwise.core.object.copy', args: { object: '', parent: '' }, opts: {} });
+const result = client.call({
+  uri: 'ak.wwise.core.object.copy',
+  args: { object: '', parent: '' },
+  options: {},
+});
 ```
