@@ -1,6 +1,6 @@
 {
   "name": "waapic",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "mashisora <mashisora@outlook.com>",
   "license": "MIT",
   "description": "A Wwise Authoring API Client Library in TypeScript.",
@@ -11,7 +11,7 @@
     "typescript",
     "nodejs"
   ],
-  "main": "./dist/index.ts",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/**/*"
