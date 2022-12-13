@@ -1,13 +1,18 @@
 {
   "name": "waapi-utils",
   "version": "0.1.0",
-  "author": "mashisora <mashisora@outlook.com>",
-  "license": "MIT",
-  "description": "A Wwise Authoring API Utils Library in TypeScript.",
-  "main": "./dist/main.ts",
+  "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/**/*"
+  ],
+  "author": "mashisora <mashisora@outlook.com>",
+  "license": "MIT",
+  "description": "A Wwise Authoring API Utils Library in TypeScript.",
+  "keywords": [
+    "WAAPI",
+    "Wwise",
+    "TypeScript"
   ],
   "repository": {
     "type": "git",
