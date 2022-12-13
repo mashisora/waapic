@@ -37,6 +37,14 @@ try {
 
 ## Screenshots
 
+### URI Autocomplete
+
 ![uri](./public/screenshot_01.png)
+
+### Arguments Autocomplete
+
 ![arguments](./public/screenshot_02.png)
+
+### Result Autocomplete
+
 ![result](./public/screenshot_03.png)
