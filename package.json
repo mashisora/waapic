@@ -10,9 +10,10 @@
   "license": "MIT",
   "description": "A Wwise Authoring API Client Library in TypeScript.",
   "keywords": [
-    "WAAPI",
-    "Wwise",
-    "TypeScript"
+    "waapi",
+    "wwise",
+    "typescript",
+    "nodejs"
   ],
   "repository": {
     "type": "git",

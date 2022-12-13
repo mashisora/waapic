@@ -21,3 +21,9 @@ try {
   console.log(err);
 }
 ```
+
+## Screenshots
+
+![UIRs](./public/screenshot_01.png)
+![Arguments](./public/screenshot_02.png)
+![Result](./public/screenshot_03.png)
