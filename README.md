@@ -1,6 +1,6 @@
-# waapi-utils
+# waapic
 
-A Wwise Authoring API Utils Library in TypeScript.
+A Wwise Authoring API Client Library in TypeScript.
 
 ## Features
 
@@ -11,7 +11,7 @@ A Wwise Authoring API Utils Library in TypeScript.
 ## Usage
 
 ```ts
-import { connect } from 'waapi-utils';
+import { connect } from 'waapic';
 
 try {
   const client = await connect('ws://127.0.0.1:8080/waapi');

@@ -1,5 +1,5 @@
 {
-  "name": "waapi-utils",
+  "name": "waapic",
   "version": "0.1.0",
   "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
@@ -8,7 +8,7 @@
   ],
   "author": "mashisora <mashisora@outlook.com>",
   "license": "MIT",
-  "description": "A Wwise Authoring API Utils Library in TypeScript.",
+  "description": "A Wwise Authoring API Client Library in TypeScript.",
   "keywords": [
     "WAAPI",
     "Wwise",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mashisora/waapi-utils.git"
+    "url": "git+https://github.com/mashisora/waapic.git"
   },
   "scripts": {
     "build": "tsc"
