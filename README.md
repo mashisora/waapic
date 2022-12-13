@@ -1,5 +1,10 @@
 # waapic
 
+![status](https://img.shields.io/badge/status-alpha-red.svg)
+![license](https://img.shields.io/badge/license-MIT-blue)
+
+> DO NOT USE IN PRODUCTION ENVIRONMENT!
+
 A Wwise Authoring API Client Library in TypeScript.
 
 ## Features
@@ -7,6 +12,14 @@ A Wwise Authoring API Client Library in TypeScript.
 - This library implements a WAAPI client with IDE autocompletion support.
 - Most arguments, options and result are fully-typed.
 - Subscribe has not implemented at this time.
+
+## Get
+
+You can get waapic from NPM registry:
+
+```
+npm install waapic
+```
 
 ## Usage
 
@@ -24,6 +37,6 @@ try {
 
 ## Screenshots
 
-![UIRs](./public/screenshot_01.png)
-![Arguments](./public/screenshot_02.png)
-![Result](./public/screenshot_03.png)
+![uri](./public/screenshot_01.png)
+![arguments](./public/screenshot_02.png)
+![result](./public/screenshot_03.png)
