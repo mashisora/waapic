@@ -21,8 +21,8 @@ export function connect(host: string): Promise<Client> {
 }
 
 export class Client {
-  session: Session;
-  connection: Connection;
+  private session: Session;
+  private connection: Connection;
 
   constructor(session: Session, connection: Connection) {
     this.session = session;
