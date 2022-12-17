@@ -1,5 +1,6 @@
-import { Session, Connection } from 'autobahn';
+import { Session, Connection, SubscribeHandler, ISubscription } from 'autobahn';
 import { IFunctions } from './functions';
+import ITopics from './topics';
 
 export function connect(host: string): Promise<Client> {
   return new Promise((resolve, reject) => {
@@ -9,13 +10,12 @@ export function connect(host: string): Promise<Client> {
       protocols: ['wamp.2.json'],
     });
 
-    connection.onclose = (reason, details) => {
-      reject(new Error(`Session closed: ${reason} ${details}`));
+    connection.onclose = (reason) => {
+      reject(new Error(`Session closed: ${reason}`));
       return true;
     };
 
     connection.onopen = (session) => resolve(new Client(session, connection));
-
     connection.open();
   });
 }
@@ -38,6 +38,29 @@ export class Client {
       this.session.call(uri, [], args, <any>opts).then(
         (res) => resolve(res ? (<any>res).kwargs : null),
         (error) => reject(error)
+      );
+    });
+  }
+
+  subscribe<K extends keyof ITopics>(
+    uri: K,
+    handler: (publish: ITopics[K]['publish']) => void,
+    options: ITopics[K]['options']
+  ): Promise<ISubscription> {
+    const handlerImpl: SubscribeHandler = (_args, kwargs) => handler(kwargs);
+    return new Promise((resolve, reject) => {
+      this.session.subscribe(uri, handlerImpl, <any>options).then(
+        (res) => resolve(res),
+        (err) => reject(err)
+      );
+    });
+  }
+
+  unsubscribe(subscription: ISubscription): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.session.unsubscribe(subscription).then(
+        (res) => resolve(res),
+        (err) => reject(err)
       );
     });
   }
