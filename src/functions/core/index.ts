@@ -140,7 +140,7 @@ namespace GetProjectInfo {
     directories: {
       /** The root directory of the project, where is located the wproj file. */
       root: string;
-      /** The .cache directory of the project, as specified in the Project Settings.  */
+      /** The .cache directory of the project, as specified in the Project Settings. */
       cache: string;
       /** The Originals directory of the project, as specified in the Project Settings. */
       originals: string;

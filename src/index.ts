@@ -50,7 +50,7 @@ export class Client {
     const handlerImpl: SubscribeHandler = (_args, kwargs) => handler(kwargs);
     return new Promise((resolve, reject) => {
       this.session.subscribe(uri, handlerImpl, <any>options).then(
-        (res) => resolve(<any>res),
+        (res) => resolve(res),
         (err) => reject(err)
       );
     });

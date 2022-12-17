@@ -171,7 +171,7 @@ export interface IObject {
 
 export interface IOptions {
   /** The array of return expressions defines which elements of the Wwise object is returned. This can include built-in accessors, such as the name or id, or object properties, such as the Volume or the Pitch. */
-  return: (
+  return?: (
     | 'id'
     | 'name'
     | 'notes'
