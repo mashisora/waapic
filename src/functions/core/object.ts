@@ -193,7 +193,7 @@ namespace Diff {
   }
 }
 
-namespace Get {
+export namespace Get {
   export interface Arguments {
     /** Specifies a query in the WAQL language. */
     waql?: string;

@@ -6,8 +6,8 @@ export function connect(host) {
             realm: 'realm1',
             protocols: ['wamp.2.json'],
         });
-        connection.onclose = (reason, details) => {
-            reject(new Error(`Session closed: ${reason} ${details}`));
+        connection.onclose = (reason) => {
+            reject(new Error(`Session closed: ${reason}`));
             return true;
         };
         connection.onopen = (session) => resolve(new Client(session, connection));
@@ -24,6 +24,17 @@ export class Client {
     call(uri, args, opts) {
         return new Promise((resolve, reject) => {
             this.session.call(uri, [], args, opts).then((res) => resolve(res ? res.kwargs : null), (error) => reject(error));
+        });
+    }
+    subscribe(uri, handler, options) {
+        const handlerImpl = (_args, kwargs) => handler(kwargs);
+        return new Promise((resolve, reject) => {
+            this.session.subscribe(uri, handlerImpl, options).then((res) => resolve(res), (err) => reject(err));
+        });
+    }
+    unsubscribe(subscription) {
+        return new Promise((resolve, reject) => {
+            this.session.unsubscribe(subscription).then((res) => resolve(res), (err) => reject(err));
         });
     }
     disconnect() {
