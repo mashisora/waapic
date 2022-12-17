@@ -1,6 +1,6 @@
 import { Get } from '../core/object';
 
-export interface IUiFunctions {
+export interface IUIFunctions {
   'ak.wwise.ui.captureScreen': {
     args: CaptureScreen.Arguments;
     opts: never;

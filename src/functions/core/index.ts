@@ -1,12 +1,16 @@
 import { IAudioFunctions } from './audio';
 import { IObjectFunctions } from './object';
+import { IProfilerFunctions } from './profiler';
+import { IRemoteFunctions } from './remote';
 import { ISoundbankFunctions } from './soundbank';
 import { ISwitchFunctions } from './switch';
 import { ITransportFunctions } from './transport';
 
 export interface ICoreFunctions
-  extends IObjectFunctions,
-    IAudioFunctions,
+  extends IAudioFunctions,
+    IObjectFunctions,
+    IProfilerFunctions,
+    IRemoteFunctions,
     ISoundbankFunctions,
     ISwitchFunctions,
     ITransportFunctions {
@@ -19,6 +23,11 @@ export interface ICoreFunctions
     args: {};
     opts: never;
     result: GetProjectInfo.Result;
+  };
+  'ak.wwise.core.project.save': {
+    args: {};
+    opts: never;
+    result: void;
   };
 }
 
