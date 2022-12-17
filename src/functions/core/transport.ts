@@ -31,7 +31,7 @@ export interface ITransportFunctions {
   };
 }
 
-export namespace Create {
+namespace Create {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to control via the transport object. */
     object: string;
@@ -45,14 +45,14 @@ export namespace Create {
   }
 }
 
-export namespace Destroy {
+namespace Destroy {
   export interface Arguments {
     /** The transport object ID to be used with all other ak.wwise.core.transport functions. */
     transport: number;
   }
 }
 
-export namespace ExecuteAction {
+namespace ExecuteAction {
   export interface Arguments {
     /** The transport object ID to be used with all other ak.wwise.core.transport functions. */
     transport?: number;
@@ -61,7 +61,7 @@ export namespace ExecuteAction {
   }
 }
 
-export namespace GetList {
+namespace GetList {
   export interface Result {
     /** An array of transport object. */
     list: {
@@ -75,7 +75,7 @@ export namespace GetList {
   }
 }
 
-export namespace GetState {
+namespace GetState {
   export interface Arguments {
     /** The transport object ID to be used with all other ak.wwise.core.transport functions. */
     transport: number;
@@ -87,7 +87,7 @@ export namespace GetState {
   }
 }
 
-export namespace Prepare {
+namespace Prepare {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to control via the transport object. */
     object: string;

@@ -21,7 +21,7 @@ export interface IAudioFunctions {
   };
 }
 
-export namespace Import {
+namespace Import {
   export interface Arguments {
     /** Determines how import object creation is performed. */
     importOperation?: 'createNew' | 'useExisting' | 'replaceExisting';
@@ -68,7 +68,7 @@ export namespace Import {
   }
 }
 
-export namespace ImportTabDelimited {
+namespace ImportTabDelimited {
   export interface Arguments {
     /** Object ID (GUID), name, or path used as root relative object paths. */
     importLocation?: string;
@@ -92,7 +92,7 @@ export namespace ImportTabDelimited {
   }
 }
 
-export namespace GetMinMaxPeaksInRegion {
+namespace GetMinMaxPeaksInRegion {
   export interface Arguments {
     /** The ID (GUID), name, or path of the audio source object. */
     object: string;
@@ -120,7 +120,7 @@ export namespace GetMinMaxPeaksInRegion {
   }
 }
 
-export namespace GetMinMaxPeaksInTrimmedRegion {
+namespace GetMinMaxPeaksInTrimmedRegion {
   export interface Arguments {
     /** The ID (GUID), name, or path of the audio source. */
     object: string;

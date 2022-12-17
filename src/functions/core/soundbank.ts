@@ -26,7 +26,7 @@ export interface ISoundbankFunctions {
   };
 }
 
-export namespace ConvertExternalSources {
+namespace ConvertExternalSources {
   export interface Arguments {
     /** An array of external sources files and corrisponding arguments. */
     sources: {
@@ -40,7 +40,7 @@ export namespace ConvertExternalSources {
   }
 }
 
-export namespace Generate {
+namespace Generate {
   export interface Arguments {
     /** List of SoundBank to generate. */
     soundbanks?: {
@@ -72,7 +72,7 @@ export namespace Generate {
   }
 }
 
-export namespace GetInclusions {
+namespace GetInclusions {
   export interface Arguments {
     /** The ID (GUID), name, or path of the SoundBank to add an inclusion to. */
     soundbank: string;
@@ -89,14 +89,14 @@ export namespace GetInclusions {
   }
 }
 
-export namespace ProcessDefinitionFiles {
+namespace ProcessDefinitionFiles {
   export interface Arguments {
     /** An array of SoundBank definition files. */
     files: string[];
   }
 }
 
-export namespace SetInclusions {
+namespace SetInclusions {
   export interface Arguments {
     /** The ID (GUID), name, or path of the SoundBank to add an inclusion to. */
     soundbank: string;

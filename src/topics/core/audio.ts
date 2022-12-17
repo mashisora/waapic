@@ -5,7 +5,7 @@ export interface IAudioTopics {
   };
 }
 
-export namespace Imported {
+namespace Imported {
   export interface Options {
     /** Data to be returned for every imported object. */
     return?: (

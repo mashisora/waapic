@@ -13,7 +13,7 @@ export interface IUIFunctions {
   };
 }
 
-export namespace CaptureScreen {
+namespace CaptureScreen {
   export interface Arguments {
     /** The name of the view as displayed in Wwise UI. By default, the whole UI is captured. */
     viewName?: string;

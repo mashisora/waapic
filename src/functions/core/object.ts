@@ -96,7 +96,7 @@ export interface IObjectFunctions {
   };
 }
 
-export namespace Copy {
+namespace Copy {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be copied. */
     object: string;
@@ -114,7 +114,7 @@ export namespace Copy {
   }
 }
 
-export namespace Create {
+namespace Create {
   export interface Arguments {
     /** The ID (GUID), name, or path of the parent of the new object. */
     parent: string;
@@ -170,14 +170,14 @@ export namespace Create {
   }[];
 }
 
-export namespace Delete {
+namespace Delete {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be deleted. */
     object: string;
   }
 }
 
-export namespace Diff {
+namespace Diff {
   export interface Arguments {
     /** The ID (GUID), name, or path of the source object. */
     source: string;
@@ -193,7 +193,7 @@ export namespace Diff {
   }
 }
 
-export namespace Get {
+namespace Get {
   export interface Arguments {
     /** Specifies a query in the WAQL language. */
     waql?: string;
@@ -424,7 +424,7 @@ export namespace Get {
   }
 }
 
-export namespace GetAttenuationCurve {
+namespace GetAttenuationCurve {
   export interface Arguments {
     /** The ID (GUID), name, or path of attenuation object. */
     object: string;
@@ -475,7 +475,7 @@ export namespace GetAttenuationCurve {
   }
 }
 
-export namespace GetPropertyAndReferenceNames {
+namespace GetPropertyAndReferenceNames {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to watch. */
     object?: string;
@@ -489,7 +489,7 @@ export namespace GetPropertyAndReferenceNames {
   }
 }
 
-export namespace GetPropertyInfo {
+namespace GetPropertyInfo {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to watch. */
     object?: string;
@@ -625,7 +625,7 @@ export namespace GetPropertyInfo {
   }
 }
 
-export namespace GetTypes {
+namespace GetTypes {
   export interface Result {
     /** An array of all Wwise object types. */
     return: {
@@ -639,7 +639,7 @@ export namespace GetTypes {
   }
 }
 
-export namespace IsPropertyEnabled {
+namespace IsPropertyEnabled {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to check. */
     object: string;
@@ -655,7 +655,7 @@ export namespace IsPropertyEnabled {
   }
 }
 
-export namespace Move {
+namespace Move {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to be moved. */
     object: string;
@@ -673,7 +673,7 @@ export namespace Move {
   }
 }
 
-export namespace PasteProperties {
+namespace PasteProperties {
   export interface Arguments {
     /** The ID (GUID), name, or path of the source object. */
     source: string;
@@ -688,7 +688,7 @@ export namespace PasteProperties {
   }
 }
 
-export namespace Set {
+namespace Set {
   export interface Arguments {
     /** An array of objects on which to set values and create child or list objects. */
     objects: {
@@ -760,7 +760,7 @@ export namespace Set {
   }[];
 }
 
-export namespace SetAttenuationCurve {
+namespace SetAttenuationCurve {
   export interface Arguments {
     /** The ID (GUID), name, or path of attenuation object. */
     object: string;
@@ -799,7 +799,7 @@ export namespace SetAttenuationCurve {
   }
 }
 
-export namespace SetName {
+namespace SetName {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to rename. */
     object: string;
@@ -808,7 +808,7 @@ export namespace SetName {
   }
 }
 
-export namespace SetNotes {
+namespace SetNotes {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to set value. */
     object: string;
@@ -817,7 +817,7 @@ export namespace SetNotes {
   }
 }
 
-export namespace SetProperty {
+namespace SetProperty {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to set value. */
     object: string;
@@ -830,7 +830,7 @@ export namespace SetProperty {
   }
 }
 
-export namespace SetRandomizer {
+namespace SetRandomizer {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object owning the property. */
     object: string;
@@ -847,7 +847,7 @@ export namespace SetRandomizer {
   }
 }
 
-export namespace SetReference {
+namespace SetReference {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object which has the reference. */
     object: string;

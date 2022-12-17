@@ -16,7 +16,7 @@ export interface ISwitchFunctions {
   };
 }
 
-export namespace AddAssignment {
+namespace AddAssignment {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object to assign to a State. This object must be the child of a Switch Container. */
     child: string;
@@ -25,7 +25,7 @@ export namespace AddAssignment {
   }
 }
 
-export namespace GetAssignments {
+namespace GetAssignments {
   export interface Arguments {
     /** The ID (GUID), name, or path of the Switch Container. */
     id: string;
@@ -42,7 +42,7 @@ export namespace GetAssignments {
   }
 }
 
-export namespace RemoveAssignment {
+namespace RemoveAssignment {
   export interface Arguments {
     /** The ID (GUID), name, or path of the object assigned to a State. This object must be the child of a Switch Container and must be currently assigned to a State. */
     child: string;

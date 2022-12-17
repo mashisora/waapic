@@ -31,7 +31,7 @@ export interface ICoreFunctions
   };
 }
 
-export namespace GetInfo {
+namespace GetInfo {
   export interface Result {
     /** Wwise session id. */
     sessionId: string;
@@ -87,7 +87,7 @@ export namespace GetInfo {
   }
 }
 
-export namespace GetProjectInfo {
+namespace GetProjectInfo {
   export interface Result {
     /** The Project name. */
     name: string;
