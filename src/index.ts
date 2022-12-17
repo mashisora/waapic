@@ -1,5 +1,5 @@
 import { Session, Connection } from 'autobahn';
-import { IFunctions } from './types/functions';
+import { IFunctions } from './functions';
 
 export function connect(host: string): Promise<Client> {
   return new Promise((resolve, reject) => {
