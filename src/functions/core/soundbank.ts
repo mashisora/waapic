@@ -1,27 +1,27 @@
 export interface ISoundbankFunctions {
   'ak.wwise.core.soundbank.convertExternalSources': {
     args: ConvertExternalSources.Arguments;
-    opts: never;
+    options: never;
     result: void;
   };
   'ak.wwise.core.soundbank.generate': {
     args: Generate.Arguments;
-    opts: never;
+    options: never;
     result: void;
   };
   'ak.wwise.core.soundbank.getInclusions': {
     args: GetInclusions.Arguments;
-    opts: never;
+    options: never;
     result: GetInclusions.Result;
   };
   'ak.wwise.core.soundbank.processDefinitionFiles': {
     args: ProcessDefinitionFiles.Arguments;
-    opts: never;
+    options: never;
     result: void;
   };
   'ak.wwise.core.soundbank.setInclusions': {
     args: SetInclusions.Arguments;
-    opts: never;
+    options: never;
     result: void;
   };
 }

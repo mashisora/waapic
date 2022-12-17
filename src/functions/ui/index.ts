@@ -3,12 +3,12 @@ import { Get } from '../core/object';
 export interface IUIFunctions {
   'ak.wwise.ui.captureScreen': {
     args: CaptureScreen.Arguments;
-    opts: never;
+    options: never;
     result: CaptureScreen.Result;
   };
   'ak.wwise.ui.getSelectedObjects': {
     args: {};
-    opts: Get.opts;
+    options: Get.options;
     result: Get.Result;
   };
 }

@@ -1,97 +1,97 @@
 export interface IObjectFunctions {
     'ak.wwise.core.object.copy': {
         args: Copy.Arguments;
-        opts: never;
+        options: never;
         result: Copy.Result;
     };
     'ak.wwise.core.object.create': {
         args: Create.Arguments;
-        opts: never;
+        options: never;
         result: Create.Result;
     };
     'ak.wwise.core.object.delete': {
         args: Delete.Arguments;
-        opts: never;
+        options: never;
         result: void;
     };
     'ak.wwise.core.object.diff': {
         args: Diff.Arguments;
-        opts: never;
+        options: never;
         result: Diff.Result;
     };
     'ak.wwise.core.object.get': {
         args: Get.Arguments;
-        opts: Get.opts;
+        options: Get.options;
         result: Get.Result;
     };
     'ak.wwise.core.object.getAttenuationCurve': {
         args: GetAttenuationCurve.Arguments;
-        opts: never;
+        options: never;
         result: GetAttenuationCurve.Result;
     };
     'ak.wwise.core.object.getPropertyAndReferenceNames': {
         args: GetPropertyAndReferenceNames.Arguments;
-        opts: never;
+        options: never;
         result: GetPropertyAndReferenceNames.Result;
     };
     'ak.wwise.core.object.getPropertyInfo': {
         args: GetPropertyInfo.Arguments;
-        opts: never;
+        options: never;
         result: GetPropertyInfo.Result;
     };
     'ak.wwise.core.object.getTypes': {
         args: {};
-        opts: never;
+        options: never;
         result: GetTypes.Result;
     };
     'ak.wwise.core.object.isPropertyEnabled': {
         args: IsPropertyEnabled.Arguments;
-        opts: never;
+        options: never;
         result: IsPropertyEnabled.Result;
     };
     'ak.wwise.core.object.move': {
         args: Move.Arguments;
-        opts: never;
+        options: never;
         result: Move.Result;
     };
     'ak.wwise.core.object.pasteProperties': {
         args: PasteProperties.Arguments;
-        opts: never;
+        options: never;
         result: void;
     };
     'ak.wwise.core.object.set': {
         args: Set.Arguments;
-        opts: never;
+        options: never;
         result: Set.Result;
     };
     'ak.wwise.core.object.setAttenuationCurve': {
         args: SetAttenuationCurve.Arguments;
-        opts: never;
+        options: never;
         result: void;
     };
     'ak.wwise.core.object.setName': {
         args: GetAttenuationCurve.Arguments;
-        opts: never;
+        options: never;
         result: GetAttenuationCurve.Result;
     };
     'ak.wwise.core.object.setNotes': {
         args: GetAttenuationCurve.Arguments;
-        opts: never;
+        options: never;
         result: GetAttenuationCurve.Result;
     };
     'ak.wwise.core.object.setProperty': {
         args: GetAttenuationCurve.Arguments;
-        opts: never;
+        options: never;
         result: GetAttenuationCurve.Result;
     };
     'ak.wwise.core.object.setRandomizer': {
         args: GetAttenuationCurve.Arguments;
-        opts: never;
+        options: never;
         result: GetAttenuationCurve.Result;
     };
     'ak.wwise.core.object.setReference': {
         args: GetAttenuationCurve.Arguments;
-        opts: never;
+        options: never;
         result: GetAttenuationCurve.Result;
     };
 }
@@ -189,7 +189,7 @@ export declare namespace Get {
         /** Specifies a query in the WAQL language. */
         waql?: string;
     }
-    interface opts {
+    interface options {
         /** Specifies what is being returned for every object. This can include built-in accessors, such as the name or id, or object properties, such as the Volume or the Pitch. */
         return?: ('id' | 'name' | 'notes' | 'type' | 'pluginName' | 'shortId' | 'classId' | 'category' | 'filePath' | 'workunit' | 'parent' | 'owner' | 'path' | 'isPlayable' | 'childrenCount' | 'totalSize' | 'mediaSize' | 'objectSize' | 'structureSize' | 'sound:convertedWemFilePath' | 'sound:originalWavFilePath' | 'soundbank:bnkFilePath' | 'music:transitionRoot' | 'music:playlistRoot' | 'audioSource:playbackDuration' | 'audioSource:maxDurationSource' | 'audioSource:trimValues' | 'audioSource:maxRadiusAttenuation' | 'audioSource:language' | 'workunit:isDefault' | 'workunit:type' | 'workunit:isDirty' | 'switchContainerChild:context' | 'convertedWemFilePath' | 'originalFilePath' | 'convertedFilePath' | 'originalWavFilePath' | 'soundbankBnkFilePath' | 'musicTransitionRoot' | 'musicPlaylistRoot' | 'playbackDuration' | 'duration' | 'maxDurationSource' | 'audioSourceTrimValues' | 'maxRadiusAttenuation' | 'audioSourceLanguage' | 'workunitIsDefault' | 'workunitType' | 'workunitIsDirty' | 'switchContainerChildContext' | 'isExplicitMute' | 'isExplicitSolo' | 'isImplicitMute' | 'isImplicitSolo' | 'points' | `@${string}`)[];
         /** The ID (GUID) or name of the platform. When not specified, the current platform is used. */
@@ -271,7 +271,7 @@ export declare namespace Get {
                 /** The name of the object. */
                 name?: string;
             };
-            /** Absolute path to the converted file. Specify the platform in the opts. Only valid for Sound and Audio Source objects. */
+            /** Absolute path to the converted file. Specify the platform in the options. Only valid for Sound and Audio Source objects. */
             convertedFilePath?: string;
             /** Absolute path to the generated SoundBank file associated with the SoundBank object. Only valid for SoundBank objects. */
             soundbankBnkFilePath?: string;

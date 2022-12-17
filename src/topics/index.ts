@@ -1,3 +1,4 @@
-import { IAudioTopics } from './core/audio';
+import { ICoreTopics } from './core';
+import { IUITopics } from './ui';
 
-export default interface ITopics extends IAudioTopics {}
+export interface ITopics extends ICoreTopics, IUITopics {}

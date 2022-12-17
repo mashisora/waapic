@@ -21,9 +21,9 @@ export class Client {
         this.session = session;
         this.connection = connection;
     }
-    call(uri, args, opts) {
+    call(uri, args, options) {
         return new Promise((resolve, reject) => {
-            this.session.call(uri, [], args, opts).then((res) => resolve(res ? res.kwargs : null), (error) => reject(error));
+            this.session.call(uri, [], args, options).then((res) => resolve(res ? res.kwargs : null), (error) => reject(error));
         });
     }
     subscribe(uri, handler, options) {

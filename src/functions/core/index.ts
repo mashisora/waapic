@@ -16,17 +16,17 @@ export interface ICoreFunctions
     ITransportFunctions {
   'ak.wwise.core.getInfo': {
     args: {};
-    opts: never;
+    options: never;
     result: GetInfo.Result;
   };
   'ak.wwise.core.getProjectInfo': {
     args: {};
-    opts: never;
+    options: never;
     result: GetProjectInfo.Result;
   };
   'ak.wwise.core.project.save': {
     args: {};
-    opts: never;
+    options: never;
     result: void;
   };
 }

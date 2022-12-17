@@ -1,22 +1,22 @@
 export interface IAudioFunctions {
     'ak.wwise.core.audio.import': {
         args: Import.Arguments;
-        opts: never;
+        options: never;
         result: Import.Result;
     };
     'ak.wwise.core.audio.importTabDelimited': {
         args: ImportTabDelimited.Arguments;
-        opts: never;
+        options: never;
         result: ImportTabDelimited.Result;
     };
     'ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInRegion': {
         args: GetMinMaxPeaksInRegion.Arguments;
-        opts: never;
+        options: never;
         result: GetMinMaxPeaksInRegion.Result;
     };
     'ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInTrimmedRegion': {
         args: GetMinMaxPeaksInTrimmedRegion.Arguments;
-        opts: never;
+        options: never;
         result: GetMinMaxPeaksInTrimmedRegion.Result;
     };
 }

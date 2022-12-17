@@ -1,6 +1,6 @@
 {
   "name": "waapic",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "mashisora <mashisora@outlook.com>",
   "license": "MIT",
   "description": "A Wwise Authoring API Client Library in TypeScript.",
@@ -20,7 +20,8 @@
     "build": "tsc"
   },
   "prettier": {
-    "singleQuote": true
+    "singleQuote": true,
+    "printWidth": 100
   },
   "dependencies": {
     "autobahn": "^22.11.1"
