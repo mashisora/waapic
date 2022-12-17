@@ -1,4 +1,4 @@
-import { Get } from '../core/object';
+import { IObject, IOptions } from '../shared';
 
 export interface IUIFunctions {
   'ak.wwise.ui.captureScreen': {
@@ -8,8 +8,8 @@ export interface IUIFunctions {
   };
   'ak.wwise.ui.getSelectedObjects': {
     args: {};
-    options: Get.options;
-    result: Get.Result;
+    options: GetSelectedObjects.options;
+    result: GetSelectedObjects.Result;
   };
 }
 
@@ -31,10 +31,25 @@ namespace CaptureScreen {
       height: number;
     };
   }
+
   export interface Result {
     /** The underlying image data format (e.g. image/png). */
     contentType: string;
     /** The encoded image data (Base64). */
     contentBase64: string;
+  }
+}
+
+namespace GetSelectedObjects {
+  export interface options extends IOptions {
+    /** The ID (GUID) or name of the platform. When not specified, the current platform is used. */
+    platform?: string;
+    /** The ID (GUID) or name of the language. */
+    language?: string;
+  }
+
+  export interface Result {
+    /** The selected objects, in the format specified in the options. Can be empty if no object is selected. */
+    objects: IObject[];
   }
 }

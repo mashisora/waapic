@@ -72,29 +72,29 @@ export interface IObjectFunctions {
     result: void;
   };
   'ak.wwise.core.object.setName': {
-    args: GetAttenuationCurve.Arguments;
+    args: SetName.Arguments;
     options: never;
-    result: GetAttenuationCurve.Result;
+    result: void;
   };
   'ak.wwise.core.object.setNotes': {
-    args: GetAttenuationCurve.Arguments;
+    args: SetNotes.Arguments;
     options: never;
-    result: GetAttenuationCurve.Result;
+    result: void;
   };
   'ak.wwise.core.object.setProperty': {
-    args: GetAttenuationCurve.Arguments;
+    args: SetProperty.Arguments;
     options: never;
-    result: GetAttenuationCurve.Result;
+    result: void;
   };
   'ak.wwise.core.object.setRandomizer': {
-    args: GetAttenuationCurve.Arguments;
+    args: SetRandomizer.Arguments;
     options: never;
-    result: GetAttenuationCurve.Result;
+    result: void;
   };
   'ak.wwise.core.object.setReference': {
-    args: GetAttenuationCurve.Arguments;
+    args: SetReference.Arguments;
     options: never;
-    result: GetAttenuationCurve.Result;
+    result: void;
   };
 }
 
@@ -195,7 +195,7 @@ namespace Diff {
   }
 }
 
-export namespace Get {
+namespace Get {
   export interface Arguments {
     /** Specifies a query in the WAQL language. */
     waql?: string;

@@ -56,119 +56,122 @@ try {
 
 Deprecated and private APIs are not listed and will never be implemented.
 
+- :o: : Supported
+- :x: : WIP
+
 ## Functions
 
 | URI                                                            | STATUS |
 | -------------------------------------------------------------- | ------ |
-| `ak.wwise.core.audio.import`                                   |        |
-| `ak.wwise.core.audio.importTabDelimited`                       |        |
-| `ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInRegion`        |        |
-| `ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInTrimmedRegion` |        |
-| `ak.wwise.core.getInfo`                                        |        |
-| `ak.wwise.core.getProjectInfo`                                 |        |
-| `ak.wwise.core.log.get`                                        |        |
-| `ak.wwise.core.object.copy`                                    |        |
-| `ak.wwise.core.object.create`                                  |        |
-| `ak.wwise.core.object.delete`                                  |        |
-| `ak.wwise.core.object.diff`                                    |        |
-| `ak.wwise.core.object.get`                                     |        |
-| `ak.wwise.core.object.getAttenuationCurve`                     |        |
-| `ak.wwise.core.object.getPropertyAndReferenceNames`            |        |
-| `ak.wwise.core.object.getPropertyInfo`                         |        |
-| `ak.wwise.core.object.getTypes`                                |        |
-| `ak.wwise.core.object.isPropertyEnabled`                       |        |
-| `ak.wwise.core.object.move`                                    |        |
-| `ak.wwise.core.object.pasteProperties`                         |        |
-| `ak.wwise.core.object.set`                                     |        |
-| `ak.wwise.core.object.setAttenuationCurve`                     |        |
-| `ak.wwise.core.object.setName`                                 |        |
-| `ak.wwise.core.object.setNotes`                                |        |
-| `ak.wwise.core.object.setProperty`                             |        |
-| `ak.wwise.core.object.setRandomizer`                           |        |
-| `ak.wwise.core.object.setReference`                            |        |
-| `ak.wwise.core.profiler.enableProfilerData`                    |        |
-| `ak.wwise.core.profiler.getAudioObjects`                       |        |
-| `ak.wwise.core.profiler.getBusses`                             |        |
-| `ak.wwise.core.profiler.getCursorTime`                         |        |
-| `ak.wwise.core.profiler.getGameObjects`                        |        |
-| `ak.wwise.core.profiler.getRTPCs`                              |        |
-| `ak.wwise.core.profiler.getVoiceContributions`                 |        |
-| `ak.wwise.core.profiler.getVoices`                             |        |
-| `ak.wwise.core.profiler.startCapture`                          |        |
-| `ak.wwise.core.profiler.stopCapture`                           |        |
-| `ak.wwise.core.project.save`                                   |        |
-| `ak.wwise.core.remote.connect`                                 |        |
-| `ak.wwise.core.remote.disconnect`                              |        |
-| `ak.wwise.core.remote.getAvailableConsoles`                    |        |
-| `ak.wwise.core.remote.getConnectionStatus`                     |        |
-| `ak.wwise.core.sound.setActiveSource`                          |        |
-| `ak.wwise.core.soundbank.convertExternalSources`               |        |
-| `ak.wwise.core.soundbank.generate`                             |        |
-| `ak.wwise.core.soundbank.getInclusions`                        |        |
-| `ak.wwise.core.soundbank.processDefinitionFiles`               |        |
-| `ak.wwise.core.soundbank.setInclusions`                        |        |
-| `ak.wwise.core.switchContainer.addAssignment`                  |        |
-| `ak.wwise.core.switchContainer.getAssignments`                 |        |
-| `ak.wwise.core.switchContainer.removeAssignment`               |        |
-| `ak.wwise.core.transport.create`                               |        |
-| `ak.wwise.core.transport.destroy`                              |        |
-| `ak.wwise.core.transport.executeAction`                        |        |
-| `ak.wwise.core.transport.getList`                              |        |
-| `ak.wwise.core.transport.getState`                             |        |
-| `ak.wwise.core.transport.prepare`                              |        |
-| `ak.wwise.core.undo.beginGroup`                                |        |
-| `ak.wwise.core.undo.cancelGroup`                               |        |
-| `ak.wwise.core.undo.endGroup`                                  |        |
-| `ak.wwise.core.undo.undo`                                      |        |
-| `ak.wwise.debug.enableAsserts`                                 |        |
-| `ak.wwise.debug.enableAutomationMode`                          |        |
-| `ak.wwise.debug.testAssert`                                    |        |
-| `ak.wwise.ui.bringToForeground`                                |        |
-| `ak.wwise.ui.captureScreen`                                    |        |
-| `ak.wwise.ui.commands.execute`                                 |        |
-| `ak.wwise.ui.commands.getCommands`                             |        |
-| `ak.wwise.ui.commands.register`                                |        |
-| `ak.wwise.ui.commands.unregister`                              |        |
-| `ak.wwise.ui.getSelectedObjects`                               |        |
-| `ak.wwise.ui.project.close`                                    |        |
-| `ak.wwise.ui.project.open`                                     |        |
-| `ak.wwise.waapi.getFunctions`                                  |        |
-| `ak.wwise.waapi.getSchema`                                     |        |
-| `ak.wwise.waapi.getTopics`                                     |        |
+| `ak.wwise.core.audio.import`                                   | :x:    |
+| `ak.wwise.core.audio.importTabDelimited`                       | :x:    |
+| `ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInRegion`        | :x:    |
+| `ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInTrimmedRegion` | :x:    |
+| `ak.wwise.core.getInfo`                                        | :x:    |
+| `ak.wwise.core.getProjectInfo`                                 | :x:    |
+| `ak.wwise.core.log.get`                                        | :x:    |
+| `ak.wwise.core.object.copy`                                    | :x:    |
+| `ak.wwise.core.object.create`                                  | :x:    |
+| `ak.wwise.core.object.delete`                                  | :x:    |
+| `ak.wwise.core.object.diff`                                    | :x:    |
+| `ak.wwise.core.object.get`                                     | :x:    |
+| `ak.wwise.core.object.getAttenuationCurve`                     | :x:    |
+| `ak.wwise.core.object.getPropertyAndReferenceNames`            | :x:    |
+| `ak.wwise.core.object.getPropertyInfo`                         | :x:    |
+| `ak.wwise.core.object.getTypes`                                | :x:    |
+| `ak.wwise.core.object.isPropertyEnabled`                       | :x:    |
+| `ak.wwise.core.object.move`                                    | :x:    |
+| `ak.wwise.core.object.pasteProperties`                         | :x:    |
+| `ak.wwise.core.object.set`                                     | :x:    |
+| `ak.wwise.core.object.setAttenuationCurve`                     | :x:    |
+| `ak.wwise.core.object.setName`                                 | :x:    |
+| `ak.wwise.core.object.setNotes`                                | :x:    |
+| `ak.wwise.core.object.setProperty`                             | :x:    |
+| `ak.wwise.core.object.setRandomizer`                           | :x:    |
+| `ak.wwise.core.object.setReference`                            | :x:    |
+| `ak.wwise.core.profiler.enableProfilerData`                    | :x:    |
+| `ak.wwise.core.profiler.getAudioObjects`                       | :x:    |
+| `ak.wwise.core.profiler.getBusses`                             | :x:    |
+| `ak.wwise.core.profiler.getCursorTime`                         | :x:    |
+| `ak.wwise.core.profiler.getGameObjects`                        | :x:    |
+| `ak.wwise.core.profiler.getRTPCs`                              | :x:    |
+| `ak.wwise.core.profiler.getVoiceContributions`                 | :x:    |
+| `ak.wwise.core.profiler.getVoices`                             | :x:    |
+| `ak.wwise.core.profiler.startCapture`                          | :x:    |
+| `ak.wwise.core.profiler.stopCapture`                           | :x:    |
+| `ak.wwise.core.project.save`                                   | :x:    |
+| `ak.wwise.core.remote.connect`                                 | :x:    |
+| `ak.wwise.core.remote.disconnect`                              | :x:    |
+| `ak.wwise.core.remote.getAvailableConsoles`                    | :x:    |
+| `ak.wwise.core.remote.getConnectionStatus`                     | :x:    |
+| `ak.wwise.core.sound.setActiveSource`                          | :x:    |
+| `ak.wwise.core.soundbank.convertExternalSources`               | :x:    |
+| `ak.wwise.core.soundbank.generate`                             | :x:    |
+| `ak.wwise.core.soundbank.getInclusions`                        | :x:    |
+| `ak.wwise.core.soundbank.processDefinitionFiles`               | :x:    |
+| `ak.wwise.core.soundbank.setInclusions`                        | :x:    |
+| `ak.wwise.core.switchContainer.addAssignment`                  | :x:    |
+| `ak.wwise.core.switchContainer.getAssignments`                 | :x:    |
+| `ak.wwise.core.switchContainer.removeAssignment`               | :x:    |
+| `ak.wwise.core.transport.create`                               | :x:    |
+| `ak.wwise.core.transport.destroy`                              | :x:    |
+| `ak.wwise.core.transport.executeAction`                        | :x:    |
+| `ak.wwise.core.transport.getList`                              | :x:    |
+| `ak.wwise.core.transport.getState`                             | :x:    |
+| `ak.wwise.core.transport.prepare`                              | :x:    |
+| `ak.wwise.core.undo.beginGroup`                                | :x:    |
+| `ak.wwise.core.undo.cancelGroup`                               | :x:    |
+| `ak.wwise.core.undo.endGroup`                                  | :x:    |
+| `ak.wwise.core.undo.undo`                                      | :x:    |
+| `ak.wwise.debug.enableAsserts`                                 | :x:    |
+| `ak.wwise.debug.enableAutomationMode`                          | :x:    |
+| `ak.wwise.debug.testAssert`                                    | :x:    |
+| `ak.wwise.ui.bringToForeground`                                | :x:    |
+| `ak.wwise.ui.captureScreen`                                    | :x:    |
+| `ak.wwise.ui.commands.execute`                                 | :x:    |
+| `ak.wwise.ui.commands.getCommands`                             | :x:    |
+| `ak.wwise.ui.commands.register`                                | :x:    |
+| `ak.wwise.ui.commands.unregister`                              | :x:    |
+| `ak.wwise.ui.getSelectedObjects`                               | :x:    |
+| `ak.wwise.ui.project.close`                                    | :x:    |
+| `ak.wwise.ui.project.open`                                     | :x:    |
+| `ak.wwise.waapi.getFunctions`                                  | :x:    |
+| `ak.wwise.waapi.getSchema`                                     | :x:    |
+| `ak.wwise.waapi.getTopics`                                     | :x:    |
 
 ## Topics
 
 | URI                                                | STATUS |
 | -------------------------------------------------- | ------ |
-| `ak.wwise.core.audio.imported`                     |        |
-| `ak.wwise.core.log.itemAdded`                      |        |
-| `ak.wwise.core.object.attenuationCurveChanged`     |        |
-| `ak.wwise.core.object.attenuationCurveLinkChanged` |        |
-| `ak.wwise.core.object.childAdded`                  |        |
-| `ak.wwise.core.object.childRemoved`                |        |
-| `ak.wwise.core.object.created`                     |        |
-| `ak.wwise.core.object.curveChanged`                |        |
-| `ak.wwise.core.object.nameChanged`                 |        |
-| `ak.wwise.core.object.notesChanged`                |        |
-| `ak.wwise.core.object.postDeleted`                 |        |
-| `ak.wwise.core.object.preDeleted`                  |        |
-| `ak.wwise.core.object.propertyChanged`             |        |
-| `ak.wwise.core.object.referenceChanged`            |        |
-| `ak.wwise.core.profiler.captureLog.itemAdded`      |        |
-| `ak.wwise.core.profiler.gameObjectRegistered`      |        |
-| `ak.wwise.core.profiler.gameObjectReset`           |        |
-| `ak.wwise.core.profiler.gameObjectUnregistered`    |        |
-| `ak.wwise.core.profiler.stateChanged`              |        |
-| `ak.wwise.core.profiler.switchChanged`             |        |
-| `ak.wwise.core.project.loaded`                     |        |
-| `ak.wwise.core.project.postClosed`                 |        |
-| `ak.wwise.core.project.preClosed`                  |        |
-| `ak.wwise.core.project.saved`                      |        |
-| `ak.wwise.core.soundbank.generated`                |        |
-| `ak.wwise.core.soundbank.generationDone`           |        |
-| `ak.wwise.core.switchContainer.assignmentAdded`    |        |
-| `ak.wwise.core.switchContainer.assignmentRemoved`  |        |
-| `ak.wwise.core.transport.stateChanged`             |        |
-| `ak.wwise.debug.assertFailed`                      |        |
-| `ak.wwise.ui.commands.executed`                    |        |
-| `ak.wwise.ui.selectionChanged`                     |        |
+| `ak.wwise.core.audio.imported`                     | :o:    |
+| `ak.wwise.core.log.itemAdded`                      | :o:    |
+| `ak.wwise.core.object.attenuationCurveChanged`     | :o:    |
+| `ak.wwise.core.object.attenuationCurveLinkChanged` | :o:    |
+| `ak.wwise.core.object.childAdded`                  | :o:    |
+| `ak.wwise.core.object.childRemoved`                | :o:    |
+| `ak.wwise.core.object.created`                     | :o:    |
+| `ak.wwise.core.object.curveChanged`                | :o:    |
+| `ak.wwise.core.object.nameChanged`                 | :o:    |
+| `ak.wwise.core.object.notesChanged`                | :o:    |
+| `ak.wwise.core.object.postDeleted`                 | :o:    |
+| `ak.wwise.core.object.preDeleted`                  | :o:    |
+| `ak.wwise.core.object.propertyChanged`             | :o:    |
+| `ak.wwise.core.object.referenceChanged`            | :o:    |
+| `ak.wwise.core.profiler.captureLog.itemAdded`      | :o:    |
+| `ak.wwise.core.profiler.gameObjectRegistered`      | :o:    |
+| `ak.wwise.core.profiler.gameObjectReset`           | :o:    |
+| `ak.wwise.core.profiler.gameObjectUnregistered`    | :o:    |
+| `ak.wwise.core.profiler.stateChanged`              | :o:    |
+| `ak.wwise.core.profiler.switchChanged`             | :o:    |
+| `ak.wwise.core.project.loaded`                     | :o:    |
+| `ak.wwise.core.project.postClosed`                 | :o:    |
+| `ak.wwise.core.project.preClosed`                  | :o:    |
+| `ak.wwise.core.project.saved`                      | :o:    |
+| `ak.wwise.core.soundbank.generated`                | :x:    |
+| `ak.wwise.core.soundbank.generationDone`           | :o:    |
+| `ak.wwise.core.switchContainer.assignmentAdded`    | :o:    |
+| `ak.wwise.core.switchContainer.assignmentRemoved`  | :o:    |
+| `ak.wwise.core.transport.stateChanged`             | :o:    |
+| `ak.wwise.debug.assertFailed`                      | :o:    |
+| `ak.wwise.ui.commands.executed`                    | :o:    |
+| `ak.wwise.ui.selectionChanged`                     | :o:    |
