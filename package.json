@@ -20,8 +20,8 @@
     "build": "tsc"
   },
   "prettier": {
-    "singleQuote": true,
-    "printWidth": 100
+    "printWidth": 100,
+    "singleQuote": true
   },
   "dependencies": {
     "autobahn": "^22.11.1"

@@ -11,7 +11,7 @@ A Wwise Authoring API Client Library in TypeScript.
 
 - This library implements a WAAPI client with IDE autocompletion support.
 - Most arguments, options and result are fully-typed.
-- Subscribe has not implemented at this time.
+- Subscribe has not implemented at this time. WIP.
 
 ## Get
 
