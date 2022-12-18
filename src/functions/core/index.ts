@@ -1,4 +1,3 @@
-import { IAudioFunctions } from './audio';
 import { IObjectFunctions } from './object';
 import { IProfilerFunctions } from './profiler';
 import { IRemoteFunctions } from './remote';
@@ -7,8 +6,7 @@ import { ISwitchFunctions } from './switch';
 import { ITransportFunctions } from './transport';
 
 export interface ICoreFunctions
-  extends IAudioFunctions,
-    IObjectFunctions,
+  extends IObjectFunctions,
     IProfilerFunctions,
     IRemoteFunctions,
     ISoundbankFunctions,

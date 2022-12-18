@@ -63,10 +63,10 @@ Deprecated and private APIs are not listed and will never be implemented.
 
 | URI                                                            | STATUS |
 | -------------------------------------------------------------- | ------ |
-| `ak.wwise.core.audio.import`                                   | :x:    |
-| `ak.wwise.core.audio.importTabDelimited`                       | :x:    |
-| `ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInRegion`        | :x:    |
-| `ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInTrimmedRegion` | :x:    |
+| `ak.wwise.core.audio.import`                                   | :o:    |
+| `ak.wwise.core.audio.importTabDelimited`                       | :o:    |
+| `ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInRegion`        | :o:    |
+| `ak.wwise.core.audioSourcePeaks.getMinMaxPeaksInTrimmedRegion` | :o:    |
 | `ak.wwise.core.getInfo`                                        | :x:    |
 | `ak.wwise.core.getProjectInfo`                                 | :x:    |
 | `ak.wwise.core.log.get`                                        | :x:    |
@@ -99,7 +99,7 @@ Deprecated and private APIs are not listed and will never be implemented.
 | `ak.wwise.core.profiler.getVoices`                             | :x:    |
 | `ak.wwise.core.profiler.startCapture`                          | :x:    |
 | `ak.wwise.core.profiler.stopCapture`                           | :x:    |
-| `ak.wwise.core.project.save`                                   | :x:    |
+| `ak.wwise.core.project.save`                                   | :o:    |
 | `ak.wwise.core.remote.connect`                                 | :x:    |
 | `ak.wwise.core.remote.disconnect`                              | :x:    |
 | `ak.wwise.core.remote.getAvailableConsoles`                    | :x:    |
@@ -126,15 +126,15 @@ Deprecated and private APIs are not listed and will never be implemented.
 | `ak.wwise.debug.enableAsserts`                                 | :x:    |
 | `ak.wwise.debug.enableAutomationMode`                          | :x:    |
 | `ak.wwise.debug.testAssert`                                    | :x:    |
-| `ak.wwise.ui.bringToForeground`                                | :x:    |
-| `ak.wwise.ui.captureScreen`                                    | :x:    |
-| `ak.wwise.ui.commands.execute`                                 | :x:    |
-| `ak.wwise.ui.commands.getCommands`                             | :x:    |
-| `ak.wwise.ui.commands.register`                                | :x:    |
-| `ak.wwise.ui.commands.unregister`                              | :x:    |
+| `ak.wwise.ui.bringToForeground`                                | :o:    |
+| `ak.wwise.ui.captureScreen`                                    | :o:    |
+| `ak.wwise.ui.commands.execute`                                 | :o:    |
+| `ak.wwise.ui.commands.getCommands`                             | :o:    |
+| `ak.wwise.ui.commands.register`                                | :o:    |
+| `ak.wwise.ui.commands.unregister`                              | :o:    |
 | `ak.wwise.ui.getSelectedObjects`                               | :x:    |
-| `ak.wwise.ui.project.close`                                    | :x:    |
-| `ak.wwise.ui.project.open`                                     | :x:    |
+| `ak.wwise.ui.project.close`                                    | :o:    |
+| `ak.wwise.ui.project.open`                                     | :o:    |
 | `ak.wwise.waapi.getFunctions`                                  | :x:    |
 | `ak.wwise.waapi.getSchema`                                     | :x:    |
 | `ak.wwise.waapi.getTopics`                                     | :x:    |

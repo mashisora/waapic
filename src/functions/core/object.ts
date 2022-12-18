@@ -23,7 +23,7 @@ export interface IObjectFunctions {
   };
   'ak.wwise.core.object.get': {
     args: Get.Arguments;
-    options: Get.options;
+    options: Get.Options;
     result: Get.Result;
   };
   'ak.wwise.core.object.getAttenuationCurve': {
@@ -201,8 +201,8 @@ namespace Get {
     waql?: string;
   }
 
-  export interface options extends IOptions {
-    /** The ID (GUID) or name of the platform. When not specified, the current platform is used. */
+  export interface Options extends IOptions {
+    /** The ID (GUID) or name of the platform. */
     platform?: string;
     /** The ID (GUID) or name of the language. */
     language?: string;

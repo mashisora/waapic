@@ -22,7 +22,7 @@ namespace Executed {
   }
 
   export interface Options extends IOptions {
-    /** The ID (GUID) or name of the platform. This is an optional argument. When not specified, the current platform is used. */
+    /** The ID (GUID) or name of the platform.*/
     platform?: string;
     /** The ID (GUID) or name of the language. */
     language?: string;
