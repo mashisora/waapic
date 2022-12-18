@@ -1,3 +1,5 @@
+import { IObject, IOptions } from '../shared';
+
 export interface IUIFunctions {
   'ak.wwise.ui.bringToForeground': {
     args: {};
@@ -28,6 +30,11 @@ export interface IUIFunctions {
     args: Unregister.Arguments;
     options: never;
     result: void;
+  };
+  'ak.wwise.ui.getSelectedObjects': {
+    args: {};
+    options: GetSelectedObjects.Options;
+    result: GetSelectedObjects.Result;
   };
 }
 
@@ -125,5 +132,19 @@ namespace Unregister {
      * An array of commands to unregister.
      */
     commands: string[];
+  }
+}
+
+namespace GetSelectedObjects {
+  export interface Options extends IOptions {
+    /** The ID (GUID) or name of the platform. */
+    platform?: string;
+    /** The ID (GUID) or name of the language. */
+    language?: string;
+  }
+
+  export interface Result {
+    /** The selected objects, in the format specified in the options. Can be empty if no object is selected. */
+    objects: IObject[];
   }
 }

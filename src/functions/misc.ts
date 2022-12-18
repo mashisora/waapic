@@ -12,9 +12,19 @@ export interface IMiscFunctions {
     result: GetProjectInfo.Result;
   };
   'ak.wwise.core.log.get': {
-    args: Get.Arguments;
+    args: GetLog.Arguments;
     options: never;
-    result: Get.Result;
+    result: GetLog.Result;
+  };
+  'ak.wwise.debug.enableAsserts': {
+    args: EnableAsserts.Arguments;
+    options: never;
+    result: void;
+  };
+  'ak.wwise.debug.enableAutomationMode': {
+    args: EnableAutomationMode.Arguments;
+    options: never;
+    result: void;
   };
 }
 
@@ -141,7 +151,7 @@ namespace GetProjectInfo {
   }
 }
 
-namespace Get {
+namespace GetLog {
   export interface Arguments {
     /** The log channel. */
     channel:
@@ -169,5 +179,19 @@ namespace Get {
       /** An array of parameters in the log item. Not present when no parameter. */
       parameters?: string[];
     }[];
+  }
+}
+
+namespace EnableAsserts {
+  export interface Arguments {
+    /** Indicates whether assertions should be enabled or disabled. */
+    enable: boolean;
+  }
+}
+
+namespace EnableAutomationMode {
+  export interface Arguments {
+    /** When set to true, the automation mode reduces the blocking of dialogs and popups. */
+    enable: boolean;
   }
 }

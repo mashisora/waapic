@@ -1,4 +1,4 @@
-import { IObject, IOptions } from '../../shared';
+import { IObject, IOptions } from '../shared';
 export interface IObjectFunctions {
     'ak.wwise.core.object.copy': {
         args: Copy.Arguments;
@@ -22,7 +22,7 @@ export interface IObjectFunctions {
     };
     'ak.wwise.core.object.get': {
         args: Get.Arguments;
-        options: Get.options;
+        options: Get.Options;
         result: Get.Result;
     };
     'ak.wwise.core.object.getAttenuationCurve': {
@@ -62,7 +62,7 @@ export interface IObjectFunctions {
     };
     'ak.wwise.core.object.set': {
         args: Set.Arguments;
-        options: never;
+        options: Set.Options;
         result: Set.Result;
     };
     'ak.wwise.core.object.setAttenuationCurve': {
@@ -71,29 +71,29 @@ export interface IObjectFunctions {
         result: void;
     };
     'ak.wwise.core.object.setName': {
-        args: GetAttenuationCurve.Arguments;
+        args: SetName.Arguments;
         options: never;
-        result: GetAttenuationCurve.Result;
+        result: void;
     };
     'ak.wwise.core.object.setNotes': {
-        args: GetAttenuationCurve.Arguments;
+        args: SetNotes.Arguments;
         options: never;
-        result: GetAttenuationCurve.Result;
+        result: void;
     };
     'ak.wwise.core.object.setProperty': {
-        args: GetAttenuationCurve.Arguments;
+        args: SetProperty.Arguments;
         options: never;
-        result: GetAttenuationCurve.Result;
+        result: void;
     };
     'ak.wwise.core.object.setRandomizer': {
-        args: GetAttenuationCurve.Arguments;
+        args: SetRandomizer.Arguments;
         options: never;
-        result: GetAttenuationCurve.Result;
+        result: void;
     };
     'ak.wwise.core.object.setReference': {
-        args: GetAttenuationCurve.Arguments;
+        args: SetReference.Arguments;
         options: never;
-        result: GetAttenuationCurve.Result;
+        result: void;
     };
 }
 declare namespace Copy {
@@ -185,13 +185,13 @@ declare namespace Diff {
         lists: string[];
     }
 }
-export declare namespace Get {
+declare namespace Get {
     interface Arguments {
         /** Specifies a query in the WAQL language. */
         waql?: string;
     }
-    interface options extends IOptions {
-        /** The ID (GUID) or name of the platform. When not specified, the current platform is used. */
+    interface Options extends IOptions {
+        /** The ID (GUID) or name of the platform. */
         platform?: string;
         /** The ID (GUID) or name of the language. */
         language?: string;
@@ -465,6 +465,12 @@ declare namespace Set {
         /** An array of child objects to be created (Recursive). */
         children?: Children;
     }[];
+    export interface Options extends IOptions {
+        /** The ID (GUID) or name of the platform. */
+        platform?: string;
+        /** The ID (GUID) or name of the language. */
+        language?: string;
+    }
     export interface Result {
         /** Array of {object, created objects} associations for each parent object. */
         objects?: {
@@ -505,6 +511,62 @@ declare namespace SetAttenuationCurve {
             /** Shape of the curve segment between this point and the next. */
             shape: 'Constant' | 'Linear' | 'Log3' | 'Log2' | 'Log1' | 'InvertedSCurve' | 'SCurve' | 'Exp1' | 'Exp2' | 'Exp3';
         }[];
+    }
+}
+declare namespace SetName {
+    interface Arguments {
+        /** The ID (GUID), name, or path of the object to rename. */
+        object: string;
+        /** The new name of the object. */
+        value: string;
+    }
+}
+declare namespace SetNotes {
+    interface Arguments {
+        /** The ID (GUID), name, or path of the object to set value. */
+        object: string;
+        /** The new notes of the object. */
+        value: string;
+    }
+}
+declare namespace SetProperty {
+    interface Arguments {
+        /** The ID (GUID), name, or path of the object to set value. */
+        object: string;
+        /** The name of the property. */
+        property: string;
+        /** The ID (GUID) or unique name of the platform. This is used to set values for unlinked properties. This is an optional argument. When not specified, the current platform is used to set the property. */
+        platform?: string;
+        /** The value of the object. The value of a property. */
+        value: null | string | number | boolean;
+    }
+}
+declare namespace SetRandomizer {
+    interface Arguments {
+        /** The ID (GUID), name, or path of the object owning the property. */
+        object: string;
+        /** The name of the property. */
+        property: string;
+        /** The ID (GUID) or unique name of the platform. */
+        platform?: string;
+        /** Enabled state of the randomizer. */
+        enabled: boolean;
+        /** Minimum value that the randomizer can offset by. */
+        min?: number;
+        /** Maximum value that the randomizer can offset by. */
+        max?: number;
+    }
+}
+declare namespace SetReference {
+    interface Arguments {
+        /** The ID (GUID), name, or path of the object which has the reference. */
+        object: string;
+        /** The ID (GUID) or unique name of the platform to link the reference. Set to null-guid for unlinked reference. */
+        platform?: string;
+        /** The name of the reference to set. */
+        reference: string;
+        /** The ID (GUID), name, path or definition of the object to be referred to. */
+        value: string;
     }
 }
 export {};

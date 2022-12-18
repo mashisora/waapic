@@ -1,11 +1,5 @@
-import { IAudioFunctions } from './audio';
-import { IObjectFunctions } from './object';
-import { IProfilerFunctions } from './profiler';
-import { IRemoteFunctions } from './remote';
-import { ISoundbankFunctions } from './soundbank';
-import { ISwitchFunctions } from './switch';
-import { ITransportFunctions } from './transport';
-export interface ICoreFunctions extends IAudioFunctions, IObjectFunctions, IProfilerFunctions, IRemoteFunctions, ISoundbankFunctions, ISwitchFunctions, ITransportFunctions {
+import { IObject } from '../shared';
+export interface IMiscFunctions {
     'ak.wwise.core.getInfo': {
         args: {};
         options: never;
@@ -16,8 +10,18 @@ export interface ICoreFunctions extends IAudioFunctions, IObjectFunctions, IProf
         options: never;
         result: GetProjectInfo.Result;
     };
-    'ak.wwise.core.project.save': {
-        args: {};
+    'ak.wwise.core.log.get': {
+        args: GetLog.Arguments;
+        options: never;
+        result: GetLog.Result;
+    };
+    'ak.wwise.debug.enableAsserts': {
+        args: EnableAsserts.Arguments;
+        options: never;
+        result: void;
+    };
+    'ak.wwise.debug.enableAutomationMode': {
+        args: EnableAutomationMode.Arguments;
         options: never;
         result: void;
     };
@@ -141,6 +145,41 @@ declare namespace GetProjectInfo {
             /** The root directory of the project. */
             properties: string;
         };
+    }
+}
+declare namespace GetLog {
+    interface Arguments {
+        /** The log channel. */
+        channel: 'soundbankGenerate' | 'conversion' | 'copyPlatformSettings' | 'waapi' | 'projectLoad' | 'general';
+    }
+    interface Result {
+        /** The entries of the log. */
+        items: {
+            /** The severity level for the log item. */
+            severity: 'Message' | 'Warning' | 'Error' | 'Fatal Error';
+            /** Number of seconds elapsed since midnight (00:00:00), January 1, 1970, Coordinated Universal Time (UTC), according to the system clock. */
+            time: number;
+            /** The message ID for the log item. */
+            messageId: string;
+            /** The description message of the log item. */
+            message: string;
+            /** The platform ID and name for which the log item was reported. */
+            platform?: IObject;
+            /** An array of parameters in the log item. Not present when no parameter. */
+            parameters?: string[];
+        }[];
+    }
+}
+declare namespace EnableAsserts {
+    interface Arguments {
+        /** Indicates whether assertions should be enabled or disabled. */
+        enable: boolean;
+    }
+}
+declare namespace EnableAutomationMode {
+    interface Arguments {
+        /** When set to true, the automation mode reduces the blocking of dialogs and popups. */
+        enable: boolean;
     }
 }
 export {};

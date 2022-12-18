@@ -1,4 +1,4 @@
-import { IObject, IOptions } from '../../shared';
+import { IObject, IOptions } from '../shared';
 
 export interface IObjectFunctions {
   'ak.wwise.core.object.copy': {
@@ -63,7 +63,7 @@ export interface IObjectFunctions {
   };
   'ak.wwise.core.object.set': {
     args: Set.Arguments;
-    options: never;
+    options: Set.Options;
     result: Set.Result;
   };
   'ak.wwise.core.object.setAttenuationCurve': {
@@ -526,6 +526,13 @@ namespace Set {
     /** An array of child objects to be created (Recursive). */
     children?: Children;
   }[];
+
+  export interface Options extends IOptions {
+    /** The ID (GUID) or name of the platform. */
+    platform?: string;
+    /** The ID (GUID) or name of the language. */
+    language?: string;
+  }
 
   export interface Result {
     /** Array of {object, created objects} associations for each parent object. */

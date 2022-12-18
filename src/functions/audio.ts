@@ -21,6 +21,11 @@ export interface IAudioFunctions {
     options: never;
     result: GetMinMaxPeaksInTrimmedRegion.Result;
   };
+  'ak.wwise.core.sound.setActiveSource': {
+    args: SetActiveSource.Arguments;
+    options: never;
+    result: void;
+  };
 }
 
 namespace Import {
@@ -178,5 +183,16 @@ namespace GetMinMaxPeaksInTrimmedRegion {
     peaksArrayLength: number;
     /** The size of the data in the peaks min max arrays. */
     peaksDataSize: number;
+  }
+}
+
+namespace SetActiveSource {
+  export interface Arguments {
+    /** Sound ID (GUID), name, or path. */
+    sound: string;
+    /** Source ID (GUID), name, or path. The source must be a child of the sound. */
+    source: string;
+    /** Platform ID (GUID) or name. */
+    platform?: string;
   }
 }

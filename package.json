@@ -1,6 +1,6 @@
 {
   "name": "waapic",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "author": "mashisora <mashisora@outlook.com>",
   "license": "MIT",
   "description": "A Wwise Authoring API Client Library in TypeScript.",
