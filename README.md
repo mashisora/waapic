@@ -1,6 +1,6 @@
 # WAAPIC
 
-![status](https://img.shields.io/badge/status-alpha-red.svg)
+![status](https://img.shields.io/badge/status-beta-orange)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
 > DO NOT USE IN PRODUCTION ENVIRONMENT!
