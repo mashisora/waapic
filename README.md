@@ -1,4 +1,4 @@
-# WAAPIC
+# WAAPIc
 
 ![status](https://img.shields.io/badge/status-beta-orange)
 ![license](https://img.shields.io/badge/license-MIT-blue)
