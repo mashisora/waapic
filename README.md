@@ -21,7 +21,7 @@ You can get waapic from NPM registry:
 npm install waapic
 ```
 
-Or, you can use this [template](https://github.com/mashisora/waapi-script-template)!
+You can also use this [template](https://github.com/mashisora/waapi-script-template) or reference this [sample project](https://github.com/mashisora/waapi-script-sample)!
 
 ## Usage
 
